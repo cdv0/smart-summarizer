@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Smart Summarizer",
+  "version": "1.0.0",
+  "description": "A simple extension that uses AI to summarize the page contents.",
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icon.png",
+      "24": "icon.png",
+      "32": "icon.png"
+    },
+    "default_title": "Smart Summarizer",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus"
+  ],
+  "content_scripts" : [
+    {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+    }
+  ]
+}
