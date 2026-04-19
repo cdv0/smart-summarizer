@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Summarizer</title>
+    <link rel="stylesheet" href="popup.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_right" />
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div id="header">
+        <div class="logo-title">
+            <img id="header-icon" src="icon.png" alt="Smart Summarizer icon" />
+            <h1 id="header-title">Summarize</h1>
+        </div>
+
+        <div id="status">
+            <button id="status-dot"></button>
+            <p id="status-text">Active</p>
+        </div>
+    </div>
+
+    <!-- CURRENT PAGE SECTION-->
+    <div id="current-page-container">
+        <div id="current-page">
+            <p class="label-gray">Current page</p>
+            <p id="current-page-title" class="text-normal">TESTING REMOVE LATER</p>
+        </div>
+    </div>
+
+    <div id="main-content">
+
+        <button id="btn-summarize-page" class="btn-summarize">
+            <div class="logo-title">
+                <img id="summarize-page-icon" class="summarize-btn-icon" src="wirte.png" alt="Write notes icon" />
+                <div class="summarize-btn-text">
+                    <p class="label-bold">Summarize page</p>
+                    <p class="subtext">Get a quick overview of the page</p>
+                </div>
+            </div>
+            <span class="material-symbols-rounded">chevron_right</span>
+        </button>
+
+        <button id="btn-summarize-content" class="btn-summarize">
+            <div class="logo-title">
+                <img id="summarize-content-icon" class="summarize-btn-icon" src="align-left.png" alt="Align left icon" />
+                <div class="summarize-btn-text">
+                    <p class="label-bold">Summarize content</p>
+                    <p class="subtext">Extract key sections</p>
+                </div>
+            </div>
+            <span class="material-symbols-rounded">chevron_right</span>
+        </button>
+
+        <div id="result-container" class="hidden">
+            <div id="result-header">
+                <p id="result-label" class="result-text">Content summary</p>
+                <button id="btn-copy" class="btn-label">Copy</button>
+            </div>
+            <p id="result-body">TESTING REMOVE LATER</p>
+        </div>
+    </div>
+
+    <div id="length-selector">
+        <p id="length-label">Length</p>
+        <div id="length-options">
+            <button id="btn-length-short" class="length-btn">Short</button>
+            <button id="btn-length-medium" class="length-btn">Medium</button>
+            <button id="btn-length-detailed" class="length-btn">Detailed</button>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p id="footer-brand">Smart Summarizer</p>
+        <div id="footer-links">
+            <button id="btn-history" class="btn-label">History</button>
+            <button id="btn-settings" class="btn-label">Settings</button>
+        </div>
+    </div>
+
+</body>
+</html>

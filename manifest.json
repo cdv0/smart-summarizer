@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Smart Summarizer",
   "version": "1.0.0",
-  "description": "A simple extension that uses AI to summarize the page contents.",
+  "description": "A simple extension that uses AI to summarize the page content.",
   "icons": {
     "48": "icon.png",
     "128": "icon.png"
