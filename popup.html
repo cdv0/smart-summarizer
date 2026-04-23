@@ -15,7 +15,7 @@
         <div id="header" class="header">
             <div class="logo-title">
                 <img id="header-icon" src="icon.png" alt="Smart Summarizer icon" />
-                <h1 id="header-title">Summarize</h1>
+                <h1 class="header-title">Summarize</h1>
             </div>
 
             <div id="status">
@@ -73,107 +73,116 @@
             </div>
         </div>
 
-        <!-- SETTINGS VIEW -->
-        <div id="settings-view">
-            <!-- HEADER -->
-            <div id="header-settings" class="header">
-                <div class="left-side-header">
-                    <button id="btn-back-settings" class="btn-back">
-                        <span class="material-symbols-rounded icon-chevron-left">chevron_left</span>
-                    </button>
-                    
-                    <div class="logo-title">
-                        <div class="background-icon" id="settings-icon">
-                            <span class="material-symbols-outlined icon">clear_day</span>
-                        </div>
-                        <h1 id="header-title">Settings</h1>
+        <!-- FOOTER -->
+        <div id="footer">
+            <p id="footer-brand" class="text-gray-small">Smart Summarizer</p>
+            <div id="footer-links">
+                <button id="btn-history" class="btn-label" type="button">History</button>
+                <button id="btn-settings" class="btn-label" type="button">Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SETTINGS VIEW -->
+    <div id="settings-view">
+        <!-- HEADER -->
+        <div id="header-settings" class="header">
+            <div class="left-side-header">
+                <button id="btn-back-settings" class="btn-back" type="button">
+                    <span class="material-symbols-rounded icon-chevron-left">chevron_left</span>
+                </button>
+                
+                <div class="logo-title">
+                    <div class="background-icon" id="settings-icon">
+                        <span class="material-symbols-outlined icon">clear_day</span>
                     </div>
+                    <h1 class="header-title">Settings</h1>
                 </div>
             </div>
+        </div>
 
-            <!-- SETTINGS CONTENT-->
-            <div id="settings-content">
-                <!-- SUMMARIZATION SECTION -->
-                <section id="settings-summarization">
-                    <p class="text-gray-small semibold settings-section-title">SUMMARIZATION</p>
+        <!-- SETTINGS CONTENT-->
+        <div id="settings-content">
+            <!-- SUMMARIZATION SECTION -->
+            <section id="settings-summarization">
+                <p class="text-gray-small semibold settings-section-title">SUMMARIZATION</p>
 
-                    <!-- DEFAULT LENGTH-->
-                    <div id="settings-default-length" class="settings-item">
-                        <div class="settings-left">
-                            <label class="settings-item-title" for="default-length">Default length</label>
-                            <p class="settings-item-subtext">Summary length when opened</p>
-                        </div>
-                        <div class="settings-right">
-                            <select name="default-length" id="default-length" class="dropdown">
-                                <option value="short">Short</option>
-                                <option value="medium">Medium</option>
-                                <option value="detailed">Detailed</option>
-                            </select>
-                        </div>
+                <!-- DEFAULT LENGTH-->
+                <div id="settings-default-length" class="settings-item">
+                    <div class="settings-left">
+                        <label class="settings-item-title" for="default-length">Default length</label>
+                        <p class="settings-item-subtext">Summary length when opened</p>
                     </div>
-                </section>
-
-                <!-- HISTORY SECTION -->
-                <section id="settings-history">
-                    <p class="text-gray-small semibold settings-section-title">HISTORY</p>
-
-                    <!-- SAVE HISTORY -->
-                    <div id="settings-save-history" class="settings-item">
-                        <div class="settings-left">
-                            <label class="settings-item-title" for="save-history">Save history</label>
-                            <p class="settings-item-subtext">Store past summaries</p>
-                        </div>
-                        <div class="settings-right">
-                            <label class="switch">
-                                <input type="checkbox" id="save-history">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
+                    <div class="settings-right">
+                        <select name="default-length" id="default-length" class="dropdown">
+                            <option value="short">Short</option>
+                            <option value="medium">Medium</option>
+                            <option value="detailed">Detailed</option>
+                        </select>
                     </div>
-
-                    <!-- KEEP HISTORY FOR -->
-                    <div id="settings-keep-history-for" class="settings-item">
-                        <div class="settings-left">
-                            <label class="settings-item-title" for="keep-history-for">Keep history for</label>
-                            <p class="settings-item-subtext">Auto-delete after this period</p>
-                        </div>
-                        <div class="settings-right">
-                            <select name="keep-history-for" id="keep-history-for" class="dropdown">
-                                <option value="seven">7 days</option>
-                                <option value="fourteen">14 days</option>
-                                <option value="thirty">30 days</option>
-                                <option value="forever">Forever</option>
-                            </select>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ABOUT SECTION -->
-                <section id="settings-about">
-                    <p class="text-gray-small semibold settings-section-title">ABOUT</p>
-
-                    <!-- VERSION -->
-                    <div id="settings-version">
-                        <div class="settings-left">
-                            <p class="">Version</p>
-                        </div>
-                        <div class="settings-right">
-                            <p id="version-text"></p>
-                        </div>
-                    </div>
-
-                    <!-- CLEAR ALL DATA BUTTON -->
-                    <button class="btn-danger-outline">Clear all data</button>
-                </section>
-            </div>
-
-            <!-- FOOTER -->
-            <div id="footer">
-                <p id="footer-brand" class="text-gray-small">Smart Summarizer</p>
-                <div id="footer-links">
-                    <button id="btn-history" class="btn-label">History</button>
-                    <button id="btn-settings" class="btn-label">Settings</button>
                 </div>
+            </section>
+
+            <!-- HISTORY SECTION -->
+            <section id="settings-history">
+                <p class="text-gray-small semibold settings-section-title">HISTORY</p>
+
+                <!-- SAVE HISTORY -->
+                <div id="settings-save-history" class="settings-item">
+                    <div class="settings-left">
+                        <label class="settings-item-title" for="save-history">Save history</label>
+                        <p class="settings-item-subtext">Store past summaries</p>
+                    </div>
+                    <div class="settings-right">
+                        <label class="switch">
+                            <input type="checkbox" id="save-history">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- KEEP HISTORY FOR -->
+                <div id="settings-keep-history-for" class="settings-item">
+                    <div class="settings-left">
+                        <label class="settings-item-title" for="keep-history-for">Keep history for</label>
+                        <p class="settings-item-subtext">Auto-delete after this period</p>
+                    </div>
+                    <div class="settings-right">
+                        <select name="keep-history-for" id="keep-history-for" class="dropdown">
+                            <option value="seven">7 days</option>
+                            <option value="fourteen">14 days</option>
+                            <option value="thirty">30 days</option>
+                            <option value="forever">Forever</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABOUT SECTION -->
+            <section id="settings-about">
+                <p class="text-gray-small semibold settings-section-title">ABOUT</p>
+
+                <!-- VERSION -->
+                <div id="settings-version">
+                    <div class="settings-left">
+                        <p>Version</p>
+                    </div>
+                    <div class="settings-right">
+                        <p id="version-text"></p>
+                    </div>
+                </div>
+
+                <!-- CLEAR ALL DATA BUTTON -->
+                <button class="btn-danger-outline" type="button">Clear all data</button>
+            </section>
+        </div>
+
+        <!-- FOOTER -->
+        <div id="footer-settings">
+            <p id="footer-brand-settings" class="text-gray-small">Smart Summarizer</p>
+            <div id="footer-links-settings">
+                <button id="btn-history-settings" class="btn-label" type="button">History</button>
+                <button id="btn-settings-current" class="btn-label" type="button">Settings</button>
             </div>
         </div>
     </div>
