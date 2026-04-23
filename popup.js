@@ -1,0 +1,2 @@
+const version = chrome.runtime.getManifest().version;
+document.getElementById("version-text").textContent = version;
