@@ -2,6 +2,7 @@ const version = chrome.runtime.getManifest().version;
 const versionText = document.getElementById("version-text");
 const homeView = document.getElementById("home-view");
 const settingsView = document.getElementById("settings-view");
+const historyView = document.getElementById("history-view");
 
 // Home view settings and history buttons
 const btnSettingsInHome = document.getElementById("btn-settings");
@@ -12,7 +13,12 @@ const btnShortLength = document.getElementById("btn-length-short");
 const btnMediumLength = document.getElementById("btn-length-medium");
 const btnDetailedLength = document.getElementById("btn-length-detailed");
 
-// Settings view history and settings buttons
+// History back, view settings and history buttons
+const btnBackHistory = document.getElementById("btn-back-history");
+const btnHistoryCurrent = document.getElementById("btn-history-current");
+const btnSettingsInHistory = document.getElementById("btn-settings-history");
+
+// Settings view back, history and settings buttons
 const btnBackSettings = document.getElementById("btn-back-settings");
 const btnSettingsInSettings = document.getElementById("btn-settings-current");
 const btnHistoryInSettings = document.getElementById("btn-history-settings");
@@ -26,29 +32,72 @@ versionText.textContent = version;
 // ******* NAVIGATION TABS ************
 // Set initial view
 settingsView.style.display = "none";
+historyView.style.display = "none";
 homeView.style.display = "block";
 
-// Go to settings
-btnSettingsInHome.addEventListener("click", () => {
+
+// Navigation Helper Functions
+function goSettings() {
+    historyView.style.display = "none";
     homeView.style.display = "none";
     settingsView.style.display = "block";
 
+    // Settings buttons
     btnSettingsInSettings.classList.add("active-tab");
     btnHistoryInSettings.classList.remove("active-tab");
+    // Home buttons
     btnHistoryInHome.classList.remove("active-tab");
     btnSettingsInHome.classList.remove("active-tab");
-});
+    // History buttons
+    btnHistoryCurrent.classList.remove("active-tab");
+    btnSettingsInHistory.classList.remove("active-tab");
+}
 
-// Back to home
-btnBackSettings.addEventListener("click", () => {
+function goHistory() {
+    homeView.style.display = "none";
     settingsView.style.display = "none";
-    homeView.style.display = "block";
+    historyView.style.display = "block";
 
+    // Settings buttons
     btnSettingsInSettings.classList.remove("active-tab");
     btnHistoryInSettings.classList.remove("active-tab");
+    // Home buttons
+    btnHistoryInHome.classList.remove("active-tab");
+    btnSettingsInHome.classList.remove("active-tab");
+    // History buttons
+    btnHistoryCurrent.classList.add("active-tab");
+    btnSettingsInHistory.classList.remove("active-tab");
+}
+
+function goHome() {
+    settingsView.style.display = "none";
+    historyView.style.display = "none";
+    homeView.style.display = "block";
+
+    // Settings buttons
+    btnSettingsInSettings.classList.remove("active-tab");
+    btnHistoryInSettings.classList.remove("active-tab");
+
+    // Home buttons
     btnSettingsInHome.classList.remove("active-tab");
     btnHistoryInHome.classList.remove("active-tab");
-});
+
+    // History buttons
+    btnHistoryCurrent.classList.remove("active-tab");
+    btnSettingsInHistory.classList.remove("active-tab");
+}
+
+// Go home
+btnBackSettings.addEventListener("click", goHome);
+btnBackHistory.addEventListener("click", goHome);
+
+// Go history
+btnHistoryInHome.addEventListener("click", goHistory);
+btnHistoryInSettings.addEventListener("click", goHistory);
+
+// Go settings
+btnSettingsInHistory.addEventListener("click", goSettings);
+btnSettingsInHome.addEventListener("click", goSettings);
 
 
 // ****** HOME VIEW: CLICK LENGTH BUTTONS *******
