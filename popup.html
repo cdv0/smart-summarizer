@@ -55,12 +55,12 @@
                 <span class="material-symbols-rounded icon-chevron-right">chevron_right</span>
             </button>
 
-            <div id="result-container" class="hidden">
-                <div id="result-header">
-                    <p id="result-label" class="result-text">Content summary</p>
-                    <button id="btn-copy" class="btn-label">Copy</button>
+            <div id="home-result-container" class="result-container hidden">
+                <div id="home-result-header" class="result-header">
+                    <p id="home-result-label" class="result-text">Content summary</p>
+                    <button id="home-btn-copy" class="btn-label">Copy</button>
                 </div>
-                <p id="result-body">TESTING REMOVE LATER</p>
+                <p id="home-result-body" class="result-body">TESTING REMOVE LATER</p>
             </div>
         </div>
 
@@ -74,7 +74,7 @@
         </div>
 
         <!-- FOOTER -->
-        <div id="footer">
+        <div id="footer" class="footer">
             <p id="footer-brand" class="text-gray-small">Smart Summarizer</p>
             <div id="footer-links">
                 <button id="btn-history" class="btn-label" type="button">History</button>
@@ -178,7 +178,7 @@
         </div>
 
         <!-- FOOTER -->
-        <div id="footer-settings">
+        <div id="footer-settings" class="footer">
             <p id="footer-brand-settings" class="text-gray-small">Smart Summarizer</p>
             <div id="footer-links-settings">
                 <button id="btn-history-settings" class="btn-label" type="button">History</button>
@@ -187,6 +187,99 @@
         </div>
     </div>
 
-    <script src="popup.js"></script>
+    <!-- HISTORY VIEW -->
+    <div id="history-view">
+
+        <!-- HEADER -->
+        <div id="header-history" class="header">
+            <div class="left-side-header">
+                <button id="btn-back-history" class="btn-back" type="button">
+                    <span class="material-symbols-rounded icon-chevron-left">chevron_left</span>
+                </button>
+                
+                <div class="logo-title">
+                    <div class="background-icon" id="history-icon">
+                        <span class="material-symbols-outlined icon">history_2</span>
+                    </div>
+                    <h1 class="header-title">History</h1>
+                </div>
+            </div>
+
+            <div class="right-side-header">
+                <button class="btn-label">Clear all</button>
+            </div>
+        </div>
+
+        <!-- HISTORY LIST CONTAINER -->
+        <!-- JS DYNAMICALLY BUILDS THIS     -->
+        <div id="history-list-container">
+        </div>
+
+        <!-- FOOTER -->
+        <div id="footer-history" class="footer">
+            <p id="footer-brand-history" class="text-gray-small">Smart Summarizer</p>
+            <div id="footer-links-history">
+                <button id="btn-history-current" class="btn-label" type="button">History</button>
+                <button id="btn-settings-history" class="btn-label" type="button">Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="history-details">
+
+        <!-- HEADER -->
+        <div id="header-history-details" class="header">
+            <div class="left-side-header">
+                <button id="btn-back-history" class="btn-back" type="button">
+                    <span class="material-symbols-rounded icon-chevron-left">chevron_left</span>
+                </button>
+                
+                <div class="logo-title">
+                    <h2 id="header-h2">History</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- HISTORY PAGE METADATA -->
+        <div id="history-metadata">
+            <div id="history-top-bar">
+                <div id="history-page-summary">
+                    <span class="material-symbols-rounded icon-notes-left">notes</span>
+                    <p>Page summary</p>
+                </div>
+                <p id="history-minutes-ago">TESTING min ago</p>
+            </div>
+            <p id="history-page-title">TESTING PAGE TITLE</p>
+            <p id="history-page-url">TESTING PAGE URL</p>
+        </div>
+
+        <!--HISTORY PAGE SUMMARY-->
+        <div id="history-result">
+            <div id="history-result-container" class="result-container hidden">
+                <div id="history-result-header" class="result-header">
+                    <p id="history-result-label" class="result-text">Content summary</p>
+                    <button id="history-btn-copy" class="btn-label">Copy</button>
+                </div>
+                <p id="history-result-body" class="result-body">TESTING REMOVE LATER</p>
+            </div>
+        </div>
+
+        <!-- HISTORY PAGE BUTTONS-->
+        <div id="history-btns-container">
+            <div id="history-btns">
+                <button class="btn-danger-outline" id="history-single-delete-btn">Delete summary</button>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div id="footer-history-details" class="footer">
+            <p id="footer-brand-history-details" class="text-gray-small">Smart Summarizer</p>
+            <div id="footer-links-history-details">
+                <button id="btn-history-details-history" class="btn-label" type="button">History</button>
+                <button id="btn-settings-history-details" class="btn-label" type="button">Settings</button>
+            </div>
+        </div>
+    </div>
+<script src="popup.js"></script>
 </body>
 </html>

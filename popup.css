@@ -11,7 +11,7 @@ p {
     margin: 0;
 }
 
-#current-page-container, #header, #main-content, #length-selector, #header-settings, #settings-content {
+#current-page-container, #header, #main-content, #length-selector, #header-settings, #settings-content, #header-history, #history-metadata, #history-result, #header-history-details, #history-btns {
     padding: 12px;
 }
 
@@ -52,16 +52,7 @@ p {
     gap: 4px;
 }
 
-#footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    border-top: solid 1px rgba(211, 211, 211, 0.311);
-}
-
-#footer-settings {
+.footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -89,13 +80,13 @@ p {
     gap: 9px;
 }
 
-#result-header {
+.result-header {
     padding: 8px 12px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: solid 1px lightgray;
+    border-bottom: solid 1px rgb(234, 234, 234);
     background-color: white;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -276,7 +267,7 @@ p {
     height: 32px;
 }
 
-#settings-icon {
+#history-icon, #settings-icon {
     background: rgb(95, 74, 179);
     width: 30px;
     height: 30px;
@@ -349,6 +340,13 @@ p {
     font-weight: 500;
 }
 
+#header-h2 {
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
 .header-title {
     font-size: 14px;
     font-weight: 500;
@@ -374,15 +372,15 @@ p {
     border-bottom: solid 1px rgba(211, 211, 211, 0.311);
 }
 
-#header-settings {
-    border-bottom: solid 1px rgba(211, 211, 211, 0.311);
+#header-settings, #header-history-details, #history-result {
+    border-bottom: solid 1px rgb(234, 234, 234);
 }
 
-#result-body {
+.result-body {
     padding: 16px 12px;
 }
 
-#result-container {
+.result-container {
     border: solid 1px lightgray;
     border-radius: 6px;
     background: rgba(231, 228, 214, 0.372);
@@ -454,4 +452,60 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+
+
+
+
+/** History Details Meta Data Section **/
+#history-metadata {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-bottom: solid 1px rgb(234, 234, 234);
+}
+
+#history-page-summary {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background-color: rgba(209, 185, 255, 0.318);
+    color: rgb(95, 74, 179);
+    font-weight: 500;
+    width: fit-content;
+}
+
+#history-top-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
+}
+
+#history-minutes-ago {
+    color: rgb(141, 141, 141);
+    font-size: 11px;
+}
+
+.icon-notes-left {
+    font-size: 16px !important;
+}
+
+#history-page-title {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+#history-page-url {
+    font-size: 11px;
+    color: rgb(116, 116, 116);
+}
+
+#history-btns-container {
+    display: flex;
+    flex-direction: column;
 }
