@@ -200,6 +200,15 @@ p {
     color: rgb(95, 74, 179);
 }
 
+.length-btn:hover {
+    background-color: rgba(209, 185, 255, 0.318);;
+}
+
+.length-btn.active-length-btn {
+    background-color: rgb(95, 74, 179);
+    color: white;
+}
+
 .btn-summarize {
     width: 100%;
     border: solid 1px lightgray;
@@ -508,4 +517,20 @@ input:checked + .slider:before {
 #history-btns-container {
     display: flex;
     flex-direction: column;
+}
+
+/** Page View On Open **/
+#home-view {
+}
+
+#settings-view {
+    display: none;
+}
+
+#history-view {
+    display: none;
+}
+
+#history-details {
+    display: none;
 }
