@@ -53,7 +53,7 @@ p {
 
 /** SHARED LAYOUT **/
 #current-page-container, #header, #main-content, #length-selector, #header-settings, #settings-content, #header-history, #history-metadata, #history-result, #header-history-details, #history-btns, #login-view, #signup-view, #new-password-view, #forgot-password-email-view, #password-changed-view {
-    padding: 12px;
+    padding:  16px 12px;
 }
 
 .header {
@@ -237,7 +237,7 @@ p {
     padding: 8px;
 }
 
-#btn-label-sign-up {
+.auth-btn-label {
     color: rgb(95, 74, 179);
     background-color: transparent;
     padding: 0px;
@@ -249,7 +249,7 @@ p {
     transition: color 0.4s ease;
 }
 
-#btn-label-sign-up:hover {
+.auth-btn-label:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
     color: rgb(76, 59, 150);
@@ -437,7 +437,7 @@ p {
 .input-container {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
 
 
@@ -627,11 +627,11 @@ input:checked + .slider:before {
     padding-bottom: 32px;
 }
 
-#btn-login {
+.btn-y-padding {
     margin: 18px 0;
 }
 
-#auth-title {
+.auth-title {
     padding: 0;
     margin: 0;
     outline: 0;
@@ -639,7 +639,7 @@ input:checked + .slider:before {
     font-size: 18px;
 }
 
-#auth-logo {
+.auth-logo {
     display: flex;
     flex-direction: column;
     justify-content: center;

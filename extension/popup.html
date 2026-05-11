@@ -12,10 +12,10 @@
     <!-- LOGIN VIEW -->
     <div id="login-view">
         <!-- Vertical Logo -->
-        <div id="auth-logo">
+        <div class="auth-logo">
             <img src="assets/icon.png" width="76" height="76"/>
-            <h1 id="auth-title">Smart Summarizer</h1>
-            <p id="auth-subtext">Get started with page summarizations</p>
+            <h1 class="auth-title">Smart Summarizer</h1>
+            <p class="auth-subtext">Get started with page summarizations</p>
         </div>
 
         <!-- Inputs -->
@@ -25,15 +25,33 @@
         </div>
 
         <!-- Buttons -->
-        <button class="btn-fill" id="btn-login">Sign in</button>
+        <button class="btn-fill btn-y-padding" id="btn-login"">Sign in</button>
 
         <!-- Sign up button -->
-         <p id="auth-subtext">Don't have an account? <span><button id="btn-label-sign-up">Sign up</button></span></p>
+         <p id="auth-subtext">Don't have an account? <span><button id="btn-label-sign-up" class="auth-btn-label">Sign up</button></span></p>
     </div>
 
     <!-- SIGNUP VIEW -->
     <div id="signup-view">
+        <!-- Vertical Logo -->
+        <div class="auth-logo">
+            <img src="assets/icon.png" width="76" height="76"/>
+            <h1 class="auth-title">Smart Summarizer</h1>
+            <p class="auth-subtext">Get started with page summarizations</p>
+        </div>
 
+        <!-- Inputs -->
+        <div id="login-inputs" class="input-container">
+            <input class="input" id="input-signup-email" placeholder="Enter email" />
+            <input class="input" id="input-signup-password" placeholder="Enter password" />
+            <input class="input" id="input-signup-confirm-password" placeholder="Confirm password" />
+        </div>
+
+        <!-- Buttons -->
+        <button class="btn-fill btn-y-padding" id="btn-signup">Sign up</button>
+
+        <!-- Sign up button -->
+         <p id="auth-subtext">Already have an account? <span><button id="btn-label-login" class="auth-btn-label">Sign in</button></span></p>
     </div>
 
     <!-- NEW PASSWORD VIEW -->

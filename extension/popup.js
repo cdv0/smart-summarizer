@@ -3,6 +3,8 @@ const versionText = document.getElementById("version-text");
 const homeView = document.getElementById("home-view");
 const settingsView = document.getElementById("settings-view");
 const historyView = document.getElementById("history-view");
+const loginView = document.getElementById("login-view");
+const signupView = document.getElementById("signup-view");
 
 // Home view settings and history buttons
 const btnSettingsInHome = document.getElementById("btn-settings");
@@ -22,6 +24,12 @@ const btnSettingsInHistory = document.getElementById("btn-settings-history");
 const btnBackSettings = document.getElementById("btn-back-settings");
 const btnSettingsInSettings = document.getElementById("btn-settings-current");
 const btnHistoryInSettings = document.getElementById("btn-history-settings");
+
+// Login view buttons
+const btnLabelSignUp = document.getElementById("btn-label-sign-up");
+
+// Signup view buttons
+const btnLabelSignIn = document.getElementById("btn-label-login");
 
 
 
@@ -87,6 +95,16 @@ function goHome() {
     btnSettingsInHistory.classList.remove("active-tab");
 }
 
+function goSignUp() {
+    loginView.style.display = "none";
+    signupView.style.display = "block";
+}
+
+function goSignIn() {
+    loginView.style.display = "block";
+    signupView.style.display = "none";
+}
+
 // Go home
 btnBackSettings.addEventListener("click", goHome);
 btnBackHistory.addEventListener("click", goHome);
@@ -98,6 +116,12 @@ btnHistoryInSettings.addEventListener("click", goHistory);
 // Go settings
 btnSettingsInHistory.addEventListener("click", goSettings);
 btnSettingsInHome.addEventListener("click", goSettings);
+
+// Go signup
+btnLabelSignUp.addEventListener("click", goSignUp);
+
+// Go signin
+btnLabelSignIn.addEventListener("click", goSignIn);
 
 
 // ****** HOME VIEW: CLICK LENGTH BUTTONS *******
