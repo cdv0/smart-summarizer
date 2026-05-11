@@ -673,3 +673,8 @@ input:checked + .slider:before {
 #forgot-password-email-view {
     margin-top: 16px;
 }
+
+/** Override **/
+#password-changed-text {
+    font-size: 14px;
+}

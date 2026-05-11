@@ -6,6 +6,8 @@ const historyView = document.getElementById("history-view");
 const loginView = document.getElementById("login-view");
 const signupView = document.getElementById("signup-view");
 const forgotPasswordEmailView = document.getElementById("forgot-password-email-view");
+const newPasswordView = document.getElementById("new-password-view");
+const passwordChangedView = document.getElementById("password-changed-view");
 
 // Home view settings and history buttons
 const btnSettingsInHome = document.getElementById("btn-settings");
@@ -35,6 +37,14 @@ const btnLabelSignIn = document.getElementById("btn-label-login");
 
 // Forgot password email view buttons
 const btnLabelBackToLogin = document.getElementById("btn-label-back-to-login");
+const btnSendPasswordResetLink = document.getElementById("btn-password-reset-link");
+
+// New password view buttons
+const btnLabelBackToLoginFromNewPassword = document.getElementById("btn-label-back-to-login-from-password");
+const btnSetNewPassword = document.getElementById("btn-set-password");
+
+// Password changed view buttons
+const btnLabelBackToLoginFromPasswordChanged = document.getElementById("btn-label-back-to-login-from-password-changed");
 
 
 
@@ -109,11 +119,23 @@ function goSignIn() {
     loginView.style.display = "flex";
     signupView.style.display = "none";
     forgotPasswordEmailView.style.display = "none";
+    newPasswordView.style.display = "none";
+    passwordChangedView.style.display = "none";
 }
 
 function goForgotPassword() {
     loginView.style.display = "none";
     forgotPasswordEmailView.style.display = "block";
+}
+
+function goNewPassword() {
+    forgotPasswordEmailView.style.display = "none";
+    newPasswordView.style.display = "block";
+}
+
+function goPasswordChanged() {
+    passwordChangedView.style.display = "block";
+    newPasswordView.style.display = "none";
 }
 
 // Go home
@@ -134,9 +156,18 @@ btnLabelSignUp.addEventListener("click", goSignUp);
 // Go signin
 btnLabelSignIn.addEventListener("click", goSignIn);
 btnLabelBackToLogin.addEventListener("click", goSignIn);
+btnLabelBackToLoginFromNewPassword.addEventListener("click", goSignIn);
+btnLabelBackToLoginFromPasswordChanged.addEventListener("click", goSignIn);
 
 // Go forgot password email view
 btnLabelForgotPassword.addEventListener("click", goForgotPassword);
+
+// Go new password view
+btnSendPasswordResetLink.addEventListener("click", goNewPassword);
+
+// Go password changed view
+btnSetNewPassword.addEventListener("click", goPasswordChanged);
+
 
 
 // ****** HOME VIEW: CLICK LENGTH BUTTONS *******
