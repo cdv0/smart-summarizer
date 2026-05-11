@@ -1,5 +1,8 @@
 // gemini.js - Connects to Gemini API 
-import { GoogleGenAI } from "@google/genai";
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
 
-// The client gets the API key from the environment variable "GEMINI_API_KEY"
-export const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+const google = createGoogleGenerativeAI({
+  apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
+});
+
+export const model = google("gemini-2.5-flash");
