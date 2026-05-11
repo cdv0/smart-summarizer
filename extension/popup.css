@@ -15,6 +15,7 @@ p {
 
 /** PAGE DISPLAY **/
 #home-view {
+    display: none;
 }
 
 #settings-view {
@@ -29,10 +30,29 @@ p {
     display: none;
 }
 
+/* #login-view {
+    display: none;
+} */
+
+#signup-view {
+    display: none;
+}
+
+#new-password-view {
+    display: none;
+}
+
+#forgot-password-email-view {
+    display: none;
+}
+
+#password-changed-view {
+    display: none;
+}
 
 
 /** SHARED LAYOUT **/
-#current-page-container, #header, #main-content, #length-selector, #header-settings, #settings-content, #header-history, #history-metadata, #history-result, #header-history-details, #history-btns {
+#current-page-container, #header, #main-content, #length-selector, #header-settings, #settings-content, #header-history, #history-metadata, #history-result, #header-history-details, #history-btns, #login-view, #signup-view, #new-password-view, #forgot-password-email-view, #password-changed-view {
     padding: 12px;
 }
 
@@ -197,6 +217,44 @@ p {
 
 
 /** BUTTONS **/
+.btn-fill {
+    border: solid 1px rgb(76, 59, 150);
+    color: rgb(255, 255, 255);
+    background-color: rgb(95, 74, 179);
+    width: 100%;
+    border-radius: 6px;
+    padding: 8px;
+    transition: color 0.4s ease;
+    cursor: pointer;
+}
+
+.btn-fill:hover {
+    border: solid 1px rgb(64, 48, 130);
+    color: rgb(255, 255, 255);
+    background-color: rgb(76, 59, 150);
+    width: 100%;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+#btn-label-sign-up {
+    color: rgb(95, 74, 179);
+    background-color: transparent;
+    padding: 0px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.4s ease;
+}
+
+#btn-label-sign-up:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: rgb(76, 59, 150);
+}
+
 .btn-back {
     display: flex;
     justify-content: center;
@@ -255,8 +313,7 @@ p {
     color: black;
 }
 
-.btn-label.active-tab,
-.btn-label.active-tab:hover {
+.btn-label.active-tab, .btn-label.active-tab:hover {
     color: rgb(95, 74, 179);
 }
 
@@ -279,20 +336,21 @@ p {
 
 .length-btn {
     font-size: 12px;
-    color: rgb(59, 59, 59);
-    border: solid 1px rgb(220, 220, 220); /* was 241 */
+    color: rgb(95, 74, 179);
+    border: solid 1px rgba(209, 185, 255, 0.75);
     border-radius: 24px;
-    background-color: white;
+    background-color: rgba(209, 185, 255, 0.318);
     padding: 3px 9px;
     cursor: pointer;
 }
 
 .length-btn:hover {
-    background-color: rgba(209, 185, 255, 0.318);;
+    background-color: rgba(209, 185, 255, 0.5);
 }
 
 .length-btn.active-length-btn {
     background-color: rgb(95, 74, 179);
+    border: solid 1px rgb(95, 74, 179);
     color: white;
 }
 
@@ -363,6 +421,24 @@ p {
     border-radius: 6px;
 }
 
+
+
+/** INPUT **/
+.input {
+    padding: 8px;
+    border-radius: 6px;
+    background-color: rgba(231, 228, 214, 0.372);
+    outline: none;
+    border: solid 1px rgb(220, 220, 220);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
 
 /** TEXT **/
@@ -538,4 +614,36 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+
+/** LOGIN PAGE **/
+#login-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+#btn-login {
+    margin: 18px 0;
+}
+
+#auth-title {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+#auth-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 24px;
 }

@@ -33,7 +33,7 @@ versionText.textContent = version;
 // Set initial view
 settingsView.style.display = "none";
 historyView.style.display = "none";
-homeView.style.display = "block";
+homeView.style.display = "none";
 
 
 // Navigation Helper Functions
