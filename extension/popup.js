@@ -5,6 +5,7 @@ const settingsView = document.getElementById("settings-view");
 const historyView = document.getElementById("history-view");
 const loginView = document.getElementById("login-view");
 const signupView = document.getElementById("signup-view");
+const forgotPasswordEmailView = document.getElementById("forgot-password-email-view");
 
 // Home view settings and history buttons
 const btnSettingsInHome = document.getElementById("btn-settings");
@@ -27,9 +28,13 @@ const btnHistoryInSettings = document.getElementById("btn-history-settings");
 
 // Login view buttons
 const btnLabelSignUp = document.getElementById("btn-label-sign-up");
+const btnLabelForgotPassword = document.getElementById("btn-label-forgot-password");
 
 // Signup view buttons
 const btnLabelSignIn = document.getElementById("btn-label-login");
+
+// Forgot password email view buttons
+const btnLabelBackToLogin = document.getElementById("btn-label-back-to-login");
 
 
 
@@ -101,8 +106,14 @@ function goSignUp() {
 }
 
 function goSignIn() {
-    loginView.style.display = "block";
+    loginView.style.display = "flex";
     signupView.style.display = "none";
+    forgotPasswordEmailView.style.display = "none";
+}
+
+function goForgotPassword() {
+    loginView.style.display = "none";
+    forgotPasswordEmailView.style.display = "block";
 }
 
 // Go home
@@ -122,6 +133,10 @@ btnLabelSignUp.addEventListener("click", goSignUp);
 
 // Go signin
 btnLabelSignIn.addEventListener("click", goSignIn);
+btnLabelBackToLogin.addEventListener("click", goSignIn);
+
+// Go forgot password email view
+btnLabelForgotPassword.addEventListener("click", goForgotPassword);
 
 
 // ****** HOME VIEW: CLICK LENGTH BUTTONS *******

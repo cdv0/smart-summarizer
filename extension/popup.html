@@ -18,17 +18,25 @@
             <p class="auth-subtext">Get started with page summarizations</p>
         </div>
 
+        <!-- TITLE -->
+        <div class="title-container">
+            <h2 class="page-title">Sign in</h2>
+        </div>
+
         <!-- Inputs -->
         <div id="login-inputs" class="input-container">
             <input class="input" id="input-login-email" placeholder="Enter email" />
             <input class="input" id="input-login-password" placeholder="Enter password" />
+            <div id="forgot-password-container">
+                <button id="btn-label-forgot-password" class="auth-btn-label">Forgot password?</button>
+            </div>
         </div>
 
         <!-- Buttons -->
         <button class="btn-fill btn-y-padding" id="btn-login"">Sign in</button>
 
         <!-- Sign up button -->
-         <p id="auth-subtext">Don't have an account? <span><button id="btn-label-sign-up" class="auth-btn-label">Sign up</button></span></p>
+         <p id="auth-subtext" class="center-horizontal">Don't have an account? <span><button id="btn-label-sign-up" class="auth-btn-label"> Sign up</button></span></p>
     </div>
 
     <!-- SIGNUP VIEW -->
@@ -38,6 +46,11 @@
             <img src="assets/icon.png" width="76" height="76"/>
             <h1 class="auth-title">Smart Summarizer</h1>
             <p class="auth-subtext">Get started with page summarizations</p>
+        </div>
+
+        <!-- TITLE -->
+        <div class="title-container">
+            <h2 class="page-title">Sign up</h2>
         </div>
 
         <!-- Inputs -->
@@ -50,18 +63,40 @@
         <!-- Buttons -->
         <button class="btn-fill btn-y-padding" id="btn-signup">Sign up</button>
 
-        <!-- Sign up button -->
-         <p id="auth-subtext">Already have an account? <span><button id="btn-label-login" class="auth-btn-label">Sign in</button></span></p>
+        <!-- Sign in button -->
+         <p id="auth-subtext" class="center-horizontal">Already have an account? <span><button id="btn-label-login" class="auth-btn-label"> Sign in</button></span></p>
     </div>
 
     <!-- NEW PASSWORD VIEW -->
     <div id="new-password-view">
-
     </div>
 
     <!-- FORGOT PASSWORD EMAIL VIEW -->
      <div id="forgot-password-email-view">
+        <!-- Vertical Logo -->
+        <div class="auth-logo">
+            <img src="assets/icon.png" width="76" height="76"/>
+            <h1 class="auth-title">Smart Summarizer</h1>
+            <p class="auth-subtext">Get started with page summarizations</p>
+        </div>
 
+        <!-- TITLE -->
+        <div class="title-container">
+            <h2 class="page-title">Reset password</h2>
+        </div>
+
+        <!-- Inputs -->
+        <div id="login-inputs" class="input-container">
+            <input class="input" id="input-login-email" placeholder="Enter email" />
+        </div>
+
+        <!-- Buttons -->
+        <button class="btn-fill btn-y-padding" id="btn-password-reset-link"">Send password reset link</button>
+
+        <!-- Sign in button -->
+         <div class="center-horizontal">
+            <p id="auth-subtext"><span><button id="btn-label-back-to-login" class="auth-btn-label">Back to login</button></span></p>
+         </div>
      </div>
 
     <!-- PASSWORD CHANGED VIEW -->

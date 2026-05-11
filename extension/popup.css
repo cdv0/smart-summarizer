@@ -1,6 +1,6 @@
 body {
     width: 350px;
-    height: 300px;
+    height: 350px;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -54,6 +54,24 @@ p {
 /** SHARED LAYOUT **/
 #current-page-container, #header, #main-content, #length-selector, #header-settings, #settings-content, #header-history, #history-metadata, #history-result, #header-history-details, #history-btns, #login-view, #signup-view, #new-password-view, #forgot-password-email-view, #password-changed-view {
     padding:  16px 12px;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.center-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .header {
@@ -247,6 +265,7 @@ p {
     cursor: pointer;
     font-weight: 500;
     transition: color 0.4s ease;
+    margin-left: 4px;
 }
 
 .auth-btn-label:hover {
@@ -646,4 +665,10 @@ input:checked + .slider:before {
     align-items: center;
     gap: 6px;
     padding-bottom: 24px;
+}
+
+#forgot-password-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
