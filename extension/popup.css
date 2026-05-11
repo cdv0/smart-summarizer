@@ -30,10 +30,6 @@ p {
     display: none;
 }
 
-/* #login-view {
-    display: none;
-} */
-
 #signup-view {
     display: none;
 }
@@ -671,4 +667,9 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+}
+
+/** Forgot password email page **/
+#forgot-password-email-view {
+    margin-top: 16px;
 }
