@@ -369,6 +369,19 @@ p {
     color: white;
 }
 
+/** Disabled button style **/
+.btn-fill:disabled {
+    background-color: rgb(180, 180, 180);
+    border: solid 1px rgb(180, 180, 180);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/** Disabled button style: "Remove" hover style for disabled buttons **/
+.btn-fill:disabled:hover {
+    background-color: rgb(180, 180, 180);
+    border: solid 1px rgb(180, 180, 180);
+}
 
 
 /** FORM ELEMENTS **/
@@ -439,14 +452,43 @@ p {
 
 
 /** INPUT **/
-.input {
+.input-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
     padding: 8px;
     border-radius: 6px;
     background-color: rgba(231, 228, 214, 0.372);
-    outline: none;
     border: solid 1px rgb(220, 220, 220);
+    box-sizing: border-box;
+}
+
+.input {
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    outline: none;
+    border: none;
     width: 100%;
     box-sizing: border-box;
+}
+
+.input-icon {
+    font-size: 16px !important;
+    color: rgb(90, 90, 90);
+    line-height: 1;
+}
+
+.password-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .input-container {

@@ -31,13 +31,17 @@ const btnHistoryInSettings = document.getElementById("btn-history-settings");
 // Login view buttons
 const btnLabelSignUp = document.getElementById("btn-label-sign-up");
 const btnLabelForgotPassword = document.getElementById("btn-label-forgot-password");
+const inputLoginEmail = document.getElementById("input-login-email");
+const inputLoginPassword = document.getElementById("input-login-password");
+const btnLogin = document.getElementById("btn-login");
 
 // Signup view buttons
 const btnLabelSignIn = document.getElementById("btn-label-login");
 
-// Forgot password email view buttons
+// Forgot password email view buttons & inputs
 const btnLabelBackToLogin = document.getElementById("btn-label-back-to-login");
 const btnSendPasswordResetLink = document.getElementById("btn-password-reset-link");
+const inputForgotPasswordEmail = document.getElementById("input-forgot-password-email");
 
 // New password view buttons
 const btnLabelBackToLoginFromNewPassword = document.getElementById("btn-label-back-to-login-from-password");
@@ -191,4 +195,46 @@ btnMediumLength.addEventListener("click", () => {
 
 btnDetailedLength.addEventListener("click", () => {
     setActiveLength(btnDetailedLength);
+});
+
+
+// ************* SIGN IN VIEW *********************
+// function updateLoginButton() {
+//     btnLogin.disabled =
+//         !inputLoginEmail.value.trim() ||
+//         !inputLoginPassword.value.trim();
+// }
+
+// btnLogin.disabled = true;
+
+// inputLoginEmail.addEventListener("input", updateLoginButton);
+// inputLoginPassword.addEventListener("input", updateLoginButton);
+
+
+// ************* SIGN UP VIEW *********************
+
+// ************* FORGOT PASSWORD VIEWS *********************
+btnSendPasswordResetLink.disabled = true;
+
+inputForgotPasswordEmail.addEventListener("input", () => {
+    btnSendPasswordResetLink.disabled = !inputForgotPasswordEmail.value.trim();
+});
+
+
+// ************ PASSWORD EYE TOGGLES *****************
+const passwordToggleBtns = document.querySelectorAll(".password-toggle");
+
+passwordToggleBtns.forEach((button) => {
+    button.addEventListener("click", () => {
+        const input = button.parentElement.querySelector(".password-input");
+        const icon = button.querySelector(".input-icon");
+
+        if (input.type === "password") {
+            input.type = "text";
+            icon.textContent = "visibility_off";
+        } else {
+            input.type = "password";
+            icon.textContent = "visibility";
+        }
+    });
 });

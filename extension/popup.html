@@ -25,8 +25,17 @@
 
         <!-- Inputs -->
         <div id="login-inputs" class="input-container">
-            <input class="input" id="input-login-email" placeholder="Enter email" type="email"/>
-            <input class="input" id="input-login-password" placeholder="Enter password" type="password"/>
+            <div class="input-wrapper">
+                <span class="material-symbols-rounded input-icon">mail</span>
+                <input class="input" id="input-login-email" placeholder="Enter email" type="email"/>
+            </div>
+            <div class="input-wrapper">
+                <span class="material-symbols-rounded input-icon">lock</span>
+                <input class="input password-input" id="input-login-password" placeholder="Enter password" type="password"/>
+                <button class="password-toggle" type="button">
+                    <span class="material-symbols-rounded input-icon">visibility</span>
+                </button>
+            </div>
             <div id="forgot-password-container">
                 <button id="btn-label-forgot-password" class="auth-btn-label">Forgot password?</button>
             </div>
@@ -55,9 +64,24 @@
 
         <!-- Inputs -->
         <div id="login-inputs" class="input-container">
-            <input class="input" id="input-signup-email" placeholder="Enter email" type="email"/>
-            <input class="input" id="input-signup-password" placeholder="Enter password" type="password"/>
-            <input class="input" id="input-signup-confirm-password" placeholder="Confirm password" type="password"/>
+            <div class="input-wrapper">
+                <span class="material-symbols-rounded input-icon">mail</span>
+                <input class="input" id="input-signup-email" placeholder="Enter email" type="email"/>
+            </div>
+            <div class="input-wrapper">
+                <span class="material-symbols-rounded input-icon">lock</span>
+                <input class="input password-input" id="input-signup-password" placeholder="Enter password" type="password"/>
+                <button class="password-toggle" type="button">
+                    <span class="material-symbols-rounded input-icon">visibility</span>
+                </button>
+            </div>
+            <div class="input-wrapper">
+                <span class="material-symbols-rounded input-icon">lock</span>
+                <input class="input password-input" id="input-signup-confirm-password" placeholder="Confirm password" type="password"/>
+                <button class="password-toggle" type="button">
+                    <span class="material-symbols-rounded input-icon">visibility</span>
+                </button>
+            </div>
         </div>
 
         <!-- Buttons -->
@@ -83,8 +107,20 @@
 
         <!-- Inputs -->
         <div id="login-inputs" class="input-container">
-            <input class="input" id="input-forgot-password-new" placeholder="Enter new password" type="password" />
-            <input class="input" id="input-forgot-password-new-confirm" placeholder="Confirm new password" type="password" />
+            <div class="input-wrapper">
+                <span class="material-symbols-rounded input-icon">lock</span>
+                <input class="input password-input" id="input-forgot-password-new" placeholder="Enter new password" type="password" />
+                <button class="password-toggle" type="button">
+                    <span class="material-symbols-rounded input-icon">visibility</span>
+                </button>
+            </div>
+            <div class="input-wrapper">
+                <span class="material-symbols-rounded input-icon">lock</span>
+                <input class="input password-input" id="input-forgot-password-new-confirm" placeholder="Confirm new password" type="password" />
+                <button class="password-toggle" type="button">
+                    <span class="material-symbols-rounded input-icon">visibility</span>
+                </button>
+            </div>
         </div>
 
         <!-- Buttons -->
@@ -112,7 +148,10 @@
 
         <!-- Inputs -->
         <div id="login-inputs" class="input-container">
-            <input class="input" id="input-forgot-password-email" placeholder="Enter email" type="email" />
+            <div class="input-wrapper">
+                <span class="material-symbols-rounded input-icon">mail</span>
+                <input class="input" id="input-forgot-password-email" placeholder="Enter email" type="email" />
+            </div>
         </div>
 
         <!-- Buttons -->
