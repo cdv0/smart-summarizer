@@ -82,6 +82,7 @@ app.post("/summarize", async (req, res) => {
   }
 });
 
+// AUTH NOTE: Auth routes almost always use POST so it sends data in the body instead of URL -- safer for sensitive date
 
 // ******************** LOG IN **********************
 app.post("/login", async (req, res) => {
