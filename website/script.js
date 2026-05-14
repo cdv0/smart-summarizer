@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = "YOUR_SUPABASE_URL";
-const supabaseAnonKey = "YOUR_SUPABASE_ANON_KEY";
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
@@ -10,23 +10,25 @@ const inputConfirmPassword = document.getElementById("input-forgot-password-new-
 const btnSetPassword = document.getElementById("btn-set-password");
 const messageText = document.getElementById("message-text");
 
+<<<<<<< HEAD
 const passwordToggleBtns = document.querySelectorAll(".password-toggle");
 
 passwordToggleBtns.forEach((button) => {
+=======
+// Eye toggles
+document.querySelectorAll(".password-toggle").forEach((button) => {
+>>>>>>> 34069348f8473f2f8eabc129cdfc81273e10b955
     button.addEventListener("click", () => {
-        const input = button.parentElement.querySelector(".password-input");
-        const icon = button.querySelector(".input-icon");
+        const wrapper = button.closest(".input-wrapper");
+        const input = wrapper.querySelector(".password-input");
+        const icon = button.querySelector(".material-symbols-rounded");
 
-        if (input.type === "password") {
-            input.type = "text";
-            icon.textContent = "visibility_off";
-        } else {
-            input.type = "password";
-            icon.textContent = "visibility";
-        }
+        input.type = input.type === "password" ? "text" : "password";
+        icon.textContent = input.type === "password" ? "visibility" : "visibility_off";
     });
 });
 
+<<<<<<< HEAD
 function checkPasswordsMatch() {
     const newVal = inputNewPassword.value;
     const confirmVal = inputConfirmPassword.value;
@@ -36,9 +38,12 @@ function checkPasswordsMatch() {
 inputNewPassword.addEventListener("input", checkPasswordsMatch);
 inputConfirmPassword.addEventListener("input", checkPasswordsMatch);
 
+=======
+// Reset password
+>>>>>>> 34069348f8473f2f8eabc129cdfc81273e10b955
 btnSetPassword.addEventListener("click", async () => {
-    const newPassword = inputNewPassword.value;
-    const confirmPassword = inputConfirmPassword.value;
+    const newPassword = inputNewPassword.value.trim();
+    const confirmPassword = inputConfirmPassword.value.trim();
 
     messageText.textContent = "";
     messageText.className = "error-text";
@@ -54,7 +59,7 @@ btnSetPassword.addEventListener("click", async () => {
     }
 
     const { error } = await supabase.auth.updateUser({
-        password: newPassword
+        password: newPassword,
     });
 
     if (error) {

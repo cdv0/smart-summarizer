@@ -161,7 +161,7 @@ app.post("/resetPassword", async (req, res) => {
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `chrome-extension://${process.env.EXTENSION_ID}/options.html`
+    redirectTo: process.env.NEW_PASSWORD_URL
   });
 
   if (error) {

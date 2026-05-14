@@ -266,30 +266,39 @@ btnSignout.addEventListener("click", async () => {
 });
 
 btnSendPasswordResetLink.addEventListener("click", async () => {
+    errorForgotPassword.textContent = "";
+    successForgotPassword.textContent = "";
+
     const response = await fetch(`${API_URL}/resetPassword`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            email: inputForgotPasswordEmail.value.trim()
-        })
+            email: inputForgotPasswordEmail.value.trim(),
+        }),
     });
 
     const data = await response.json();
-    console.log("Reset response:", response.ok, data);
 
     if (!response.ok) {
-        console.log("Reset password error:", data.error);
         errorForgotPassword.textContent = data.error;
         successForgotPassword.textContent = "";
         return;
     }
 
+<<<<<<< HEAD
     errorForgotPassword.textContent = "";
     successForgotPassword.textContent = "Reset link sent to email";
 });
 
+=======
+    successForgotPassword.textContent = "Reset link sent to email.";
+});
+
+
+// ************ PASSWORD EYE TOGGLES *****************
+>>>>>>> 34069348f8473f2f8eabc129cdfc81273e10b955
 const passwordToggleBtns = document.querySelectorAll(".password-toggle");
 
 passwordToggleBtns.forEach((button) => {
@@ -310,6 +319,14 @@ passwordToggleBtns.forEach((button) => {
 const errorTexts = document.querySelectorAll(".error-text");
 const inputs = document.querySelectorAll(".input");
 
+<<<<<<< HEAD
+=======
+inputForgotPasswordEmail.addEventListener("input", () => {
+    successForgotPassword.textContent = "";
+    errorForgotPassword.textContent = "";
+});
+
+>>>>>>> 34069348f8473f2f8eabc129cdfc81273e10b955
 inputs.forEach((input) => {
     input.addEventListener("input", () => {
         errorTexts.forEach((text) => {
