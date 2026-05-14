@@ -3,19 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Reset Password</title>
-
     <link rel="stylesheet" href="style.css" />
-
-    <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"/>
+    <link rel="icon" type="image/png" href="./icon.png" />
 </head>
 
 <body>
-
     <div id="new-password-view">
 
         <!-- Vertical Logo -->
@@ -32,48 +26,41 @@
 
         <!-- Inputs -->
         <div class="input-container">
-
             <div class="input-wrapper">
                 <span class="material-symbols-rounded input-icon">lock</span>
-
                 <input
                     class="input password-input"
                     id="input-forgot-password-new"
                     placeholder="Enter new password"
                     type="password"
                 />
-
                 <button class="password-toggle" type="button">
                     <span class="material-symbols-rounded input-icon">
                         visibility
                     </span>
                 </button>
             </div>
-
             <div class="input-wrapper">
                 <span class="material-symbols-rounded input-icon">lock</span>
-
                 <input
                     class="input password-input"
                     id="input-forgot-password-new-confirm"
                     placeholder="Confirm new password"
                     type="password"
                 />
-
                 <button class="password-toggle" type="button">
                     <span class="material-symbols-rounded input-icon">
                         visibility
                     </span>
                 </button>
             </div>
-
         </div>
 
         <!-- Buttons -->
         <button
             class="btn-fill btn-y-padding"
             id="btn-set-password"
-            type="submit"
+            type="button"
         >
             Set new password
         </button>
@@ -84,8 +71,6 @@
         </div>
 
     </div>
-
     <script type="module" src="script.js"></script>
-
 </body>
 </html>

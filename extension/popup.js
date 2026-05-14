@@ -51,7 +51,7 @@ const errorSignup = document.getElementById("error-signup");
 
 // Forgot password email view buttons & inputs
 const btnLabelBackToLogin = document.getElementById("btn-label-back-to-login");
-const btnSendPasswordResetLink = document.getElementById("btn-password-reset-link",);
+const btnSendPasswordResetLink = document.getElementById("btn-password-reset-link");
 const inputForgotPasswordEmail = document.getElementById("input-forgot-password-email");
 const errorForgotPassword = document.getElementById("error-forgot-password");
 const successForgotPassword = document.getElementById("success-forgot-password");
@@ -330,29 +330,28 @@ btnSignout.addEventListener("click", async () => {
 
 // *********** RESET PASSWORD *****************
 btnSendPasswordResetLink.addEventListener("click", async () => {
+    errorForgotPassword.textContent = "";
+    successForgotPassword.textContent = "";
+
     const response = await fetch(`${API_URL}/resetPassword`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            email: inputForgotPasswordEmail.value.trim()
-        })
+            email: inputForgotPasswordEmail.value.trim(),
+        }),
     });
 
     const data = await response.json();
-    console.log("Reset response:", response.ok, data);
 
     if (!response.ok) {
-        console.log("Reset password error:", data.error);
         errorForgotPassword.textContent = data.error;
         return;
     }
 
-    successForgotPassword.textContent = "Reset link sent to email";
-
-    console.log(errorForgotPassword);
-})
+    successForgotPassword.textContent = "Reset link sent to email.";
+});
 
 
 // ************ PASSWORD EYE TOGGLES *****************
@@ -380,7 +379,7 @@ const successText = document.getElementById("success-forgot-password");
 const inputs = document.querySelectorAll(".input");
 
 inputForgotPasswordEmail.addEventListener("input", () => {
-    successText.textContent = "";
+    successForgotPassword.textContent = "";
     errorForgotPassword.textContent = "";
 });
 
