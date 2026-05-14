@@ -30,17 +30,23 @@ const btnHistoryInSettings = document.getElementById("btn-history-settings");
 
 // Login view buttons
 const btnLabelSignUp = document.getElementById("btn-label-sign-up");
-const btnLabelForgotPassword = document.getElementById("btn-label-forgot-password");
+const btnLabelForgotPassword = document.getElementById(
+  "btn-label-forgot-password",
+);
 const inputLoginEmail = document.getElementById("input-login-email");
 const inputLoginPassword = document.getElementById("input-login-password");
 const btnLogin = document.getElementById("btn-login");
 
 // Signup view buttons
 const btnLabelSignIn = document.getElementById("btn-label-login");
+const inputSignupEmail = document.getElementById("input-signup-email");
+const inputSignupPassword = document.getElementById("input-signup-password");
+const inputSignupConfirmPassword = document.getElementById("input-signup-confirm-password");
+const btnSignup = document.getElementById("btn-signup");
 
 // Forgot password email view buttons & inputs
 const btnLabelBackToLogin = document.getElementById("btn-label-back-to-login");
-const btnSendPasswordResetLink = document.getElementById("btn-password-reset-link");
+const btnSendPasswordResetLink = document.getElementById("btn-password-reset-link",);
 const inputForgotPasswordEmail = document.getElementById("input-forgot-password-email");
 
 // New password view buttons
@@ -50,11 +56,8 @@ const btnSetNewPassword = document.getElementById("btn-set-password");
 // Password changed view buttons
 const btnLabelBackToLoginFromPasswordChanged = document.getElementById("btn-label-back-to-login-from-password-changed");
 
-
-
 // Set version text
 versionText.textContent = version;
-
 
 // ******* NAVIGATION TABS ************
 // Set initial view
@@ -62,84 +65,85 @@ settingsView.style.display = "none";
 historyView.style.display = "none";
 homeView.style.display = "none";
 
-
 // Navigation Helper Functions
 function goSettings() {
-    historyView.style.display = "none";
-    homeView.style.display = "none";
-    settingsView.style.display = "block";
+  historyView.style.display = "none";
+  homeView.style.display = "none";
+  settingsView.style.display = "block";
 
-    // Settings buttons
-    btnSettingsInSettings.classList.add("active-tab");
-    btnHistoryInSettings.classList.remove("active-tab");
-    // Home buttons
-    btnHistoryInHome.classList.remove("active-tab");
-    btnSettingsInHome.classList.remove("active-tab");
-    // History buttons
-    btnHistoryCurrent.classList.remove("active-tab");
-    btnSettingsInHistory.classList.remove("active-tab");
+  // Settings buttons
+  btnSettingsInSettings.classList.add("active-tab");
+  btnHistoryInSettings.classList.remove("active-tab");
+  // Home buttons
+  btnHistoryInHome.classList.remove("active-tab");
+  btnSettingsInHome.classList.remove("active-tab");
+  // History buttons
+  btnHistoryCurrent.classList.remove("active-tab");
+  btnSettingsInHistory.classList.remove("active-tab");
 }
 
 function goHistory() {
-    homeView.style.display = "none";
-    settingsView.style.display = "none";
-    historyView.style.display = "block";
+  homeView.style.display = "none";
+  settingsView.style.display = "none";
+  historyView.style.display = "block";
 
-    // Settings buttons
-    btnSettingsInSettings.classList.remove("active-tab");
-    btnHistoryInSettings.classList.remove("active-tab");
-    // Home buttons
-    btnHistoryInHome.classList.remove("active-tab");
-    btnSettingsInHome.classList.remove("active-tab");
-    // History buttons
-    btnHistoryCurrent.classList.add("active-tab");
-    btnSettingsInHistory.classList.remove("active-tab");
+  // Settings buttons
+  btnSettingsInSettings.classList.remove("active-tab");
+  btnHistoryInSettings.classList.remove("active-tab");
+  // Home buttons
+  btnHistoryInHome.classList.remove("active-tab");
+  btnSettingsInHome.classList.remove("active-tab");
+  // History buttons
+  btnHistoryCurrent.classList.add("active-tab");
+  btnSettingsInHistory.classList.remove("active-tab");
 }
 
 function goHome() {
-    settingsView.style.display = "none";
-    historyView.style.display = "none";
-    homeView.style.display = "block";
+  settingsView.style.display = "none";
+  historyView.style.display = "none";
+  signupView.style.display = "none";
+  loginView.style.display = "none";
+  homeView.style.display = "block";
 
-    // Settings buttons
-    btnSettingsInSettings.classList.remove("active-tab");
-    btnHistoryInSettings.classList.remove("active-tab");
+  // Settings buttons
+  btnSettingsInSettings.classList.remove("active-tab");
+  btnHistoryInSettings.classList.remove("active-tab");
 
-    // Home buttons
-    btnSettingsInHome.classList.remove("active-tab");
-    btnHistoryInHome.classList.remove("active-tab");
+  // Home buttons
+  btnSettingsInHome.classList.remove("active-tab");
+  btnHistoryInHome.classList.remove("active-tab");
 
-    // History buttons
-    btnHistoryCurrent.classList.remove("active-tab");
-    btnSettingsInHistory.classList.remove("active-tab");
+  // History buttons
+  btnHistoryCurrent.classList.remove("active-tab");
+  btnSettingsInHistory.classList.remove("active-tab");
 }
 
 function goSignUp() {
-    loginView.style.display = "none";
-    signupView.style.display = "block";
+  loginView.style.display = "none";
+  signupView.style.display = "block";
 }
 
 function goSignIn() {
-    loginView.style.display = "flex";
-    signupView.style.display = "none";
-    forgotPasswordEmailView.style.display = "none";
-    newPasswordView.style.display = "none";
-    passwordChangedView.style.display = "none";
+  loginView.style.display = "flex";
+  signupView.style.display = "none";
+  forgotPasswordEmailView.style.display = "none";
+  newPasswordView.style.display = "none";
+  passwordChangedView.style.display = "none";
 }
 
 function goForgotPassword() {
-    loginView.style.display = "none";
-    forgotPasswordEmailView.style.display = "block";
+  loginView.style.display = "none";
+  forgotPasswordEmailView.style.display = "block";
 }
 
 function goNewPassword() {
-    forgotPasswordEmailView.style.display = "none";
-    newPasswordView.style.display = "block";
+  forgotPasswordEmailView.style.display = "none";
+  newPasswordView.style.display = "block";
 }
 
 function goPasswordChanged() {
-    passwordChangedView.style.display = "block";
-    newPasswordView.style.display = "none";
+  passwordChangedView.style.display = "block";
+  newPasswordView.style.display = "none";
 }
 
 // Go home
@@ -172,31 +176,28 @@ btnSendPasswordResetLink.addEventListener("click", goNewPassword);
 // Go password changed view
 btnSetNewPassword.addEventListener("click", goPasswordChanged);
 
-
-
 // ****** HOME VIEW: CLICK LENGTH BUTTONS *******
 // Helper function
 function setActiveLength(activeBtn) {
-    btnShortLength.classList.remove("active-length-btn");
-    btnMediumLength.classList.remove("active-length-btn");
-    btnDetailedLength.classList.remove("active-length-btn");
+  btnShortLength.classList.remove("active-length-btn");
+  btnMediumLength.classList.remove("active-length-btn");
+  btnDetailedLength.classList.remove("active-length-btn");
 
-    activeBtn.classList.add("active-length-btn");
+  activeBtn.classList.add("active-length-btn");
 }
 
 // click handlers
 btnShortLength.addEventListener("click", () => {
-    setActiveLength(btnShortLength);
+  setActiveLength(btnShortLength);
 });
 
 btnMediumLength.addEventListener("click", () => {
-    setActiveLength(btnMediumLength);
+  setActiveLength(btnMediumLength);
 });
 
 btnDetailedLength.addEventListener("click", () => {
-    setActiveLength(btnDetailedLength);
+  setActiveLength(btnDetailedLength);
 });
-
 
 // ************* SIGN IN VIEW *********************
 // function updateLoginButton() {
@@ -210,31 +211,52 @@ btnDetailedLength.addEventListener("click", () => {
 // inputLoginEmail.addEventListener("input", updateLoginButton);
 // inputLoginPassword.addEventListener("input", updateLoginButton);
 
-
 // ************* SIGN UP VIEW *********************
+btnSignup.addEventListener("click", async () => {
+    const response = await fetch("http://localhost:3000/signup", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            email: inputSignupEmail.value.trim(),
+            password: inputSignupPassword.value,
+            confirmPassword: inputSignupConfirmPassword.value,
+        }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        console.log("Signup error:", data.error);
+        return;
+    }
+
+    console.log("Signup success:", data);
+    goHome();
+});
 
 // ************* FORGOT PASSWORD VIEWS *********************
 btnSendPasswordResetLink.disabled = true;
 
 inputForgotPasswordEmail.addEventListener("input", () => {
-    btnSendPasswordResetLink.disabled = !inputForgotPasswordEmail.value.trim();
+  btnSendPasswordResetLink.disabled = !inputForgotPasswordEmail.value.trim();
 });
-
 
 // ************ PASSWORD EYE TOGGLES *****************
 const passwordToggleBtns = document.querySelectorAll(".password-toggle");
 
 passwordToggleBtns.forEach((button) => {
-    button.addEventListener("click", () => {
-        const input = button.parentElement.querySelector(".password-input");
-        const icon = button.querySelector(".input-icon");
+  button.addEventListener("click", () => {
+    const input = button.parentElement.querySelector(".password-input");
+    const icon = button.querySelector(".input-icon");
 
-        if (input.type === "password") {
-            input.type = "text";
-            icon.textContent = "visibility_off";
-        } else {
-            input.type = "password";
-            icon.textContent = "visibility";
-        }
-    });
+    if (input.type === "password") {
+      input.type = "text";
+      icon.textContent = "visibility_off";
+    } else {
+      input.type = "password";
+      icon.textContent = "visibility";
+    }
+  });
 });
