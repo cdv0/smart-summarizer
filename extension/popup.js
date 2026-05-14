@@ -202,6 +202,16 @@ btnDetailedLength.addEventListener("click", () => {
   setActiveLength(btnDetailedLength);
 });
 
+// ************** POP UP OPENS *******************
+chrome.storage.local.get(["access_token"], (result) => {
+    if (result.access_token) {
+        goHome();
+    } else {
+        goSignIn();
+    }
+})
+
+
 // ************* SIGN IN VIEW *********************
 // function updateLoginButton() {
 //     btnLogin.disabled =
@@ -235,6 +245,16 @@ btnLogin.addEventListener("click", async () => {
         return;
     }
 
+    if (data.session) {
+        // Store session token using chrome local storage for chrome extensions
+        await chrome.storage.local.set({
+            access_token: data.session.access_token
+        })
+
+        const saved = await chrome.storage.local.get(["access_token"]);
+        console.log("Saved token:", saved.access_token);    
+    }
+
     console.log("Login success:", data);
     goHome();
 })
@@ -261,6 +281,8 @@ btnSignup.addEventListener("click", async () => {
         console.log("Signup error:", data.error);
         return;
     }
+
+    // Confirmation is required, supabase may not return a session
 
     console.log("Signup success:", data);
     goHome();

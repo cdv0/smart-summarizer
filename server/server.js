@@ -101,7 +101,10 @@ app.post("/login", async (req, res) => {
     return res.status(400).json({ error: error.message });
   }
 
-  return res.json({ user: data.user });
+  return res.json({ 
+    user: data.user,
+    session: data.session // Save session whenever user signs in
+  });
 
 })
 
