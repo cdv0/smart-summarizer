@@ -8,9 +8,8 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 const inputNewPassword = document.getElementById("input-forgot-password-new");
 const inputConfirmPassword = document.getElementById("input-forgot-password-new-confirm");
 const btnSetPassword = document.getElementById("btn-set-password");
-const messageText = document.getElementById("error-login");
+const messageText = document.getElementById("message-text");
 
-// ************ PASSWORD EYE TOGGLES *****************
 const passwordToggleBtns = document.querySelectorAll(".password-toggle");
 
 passwordToggleBtns.forEach((button) => {
@@ -28,7 +27,15 @@ passwordToggleBtns.forEach((button) => {
     });
 });
 
-// ************ RESET PASSWORD *****************
+function checkPasswordsMatch() {
+    const newVal = inputNewPassword.value;
+    const confirmVal = inputConfirmPassword.value;
+    btnSetPassword.disabled = !(newVal && confirmVal && newVal === confirmVal);
+}
+
+inputNewPassword.addEventListener("input", checkPasswordsMatch);
+inputConfirmPassword.addEventListener("input", checkPasswordsMatch);
+
 btnSetPassword.addEventListener("click", async () => {
     const newPassword = inputNewPassword.value;
     const confirmPassword = inputConfirmPassword.value;
@@ -56,5 +63,5 @@ btnSetPassword.addEventListener("click", async () => {
     }
 
     messageText.className = "success-text";
-    messageText.textContent = "Successfully changed password";
+    messageText.textContent = "Password successfully changed.";
 });

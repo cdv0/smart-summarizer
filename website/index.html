@@ -3,84 +3,66 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Reset Password</title>
-
+    <link rel="icon" type="image/png" href="./icon.png" />
     <link rel="stylesheet" href="style.css" />
-
-    <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"/>
 </head>
 
 <body>
-
     <div id="new-password-view">
 
-        <!-- Vertical Logo -->
         <div class="auth-logo">
             <img src="./icon.png" width="68" height="68" />
             <h1 class="auth-title">Smart Summarizer</h1>
             <p class="auth-subtext">Get started with page summarizations</p>
         </div>
 
-        <!-- TITLE -->
         <div class="title-container">
             <h2 class="page-title">Reset password</h2>
         </div>
 
-        <!-- Inputs -->
         <div class="input-container">
 
             <div class="input-wrapper">
                 <span class="material-symbols-rounded input-icon">lock</span>
-
                 <input
                     class="input password-input"
                     id="input-forgot-password-new"
                     placeholder="Enter new password"
                     type="password"
                 />
-
                 <button class="password-toggle" type="button">
-                    <span class="material-symbols-rounded input-icon">
-                        visibility
-                    </span>
+                    <span class="material-symbols-rounded input-icon">visibility</span>
                 </button>
             </div>
 
             <div class="input-wrapper">
                 <span class="material-symbols-rounded input-icon">lock</span>
-
                 <input
                     class="input password-input"
                     id="input-forgot-password-new-confirm"
                     placeholder="Confirm new password"
                     type="password"
                 />
-
                 <button class="password-toggle" type="button">
-                    <span class="material-symbols-rounded input-icon">
-                        visibility
-                    </span>
+                    <span class="material-symbols-rounded input-icon">visibility</span>
                 </button>
             </div>
 
         </div>
 
-        <!-- Buttons -->
         <button
             class="btn-fill btn-y-padding"
             id="btn-set-password"
             type="submit"
+            disabled
         >
             Set new password
         </button>
 
-        <!-- ERROR MESSAGE -->
         <div class="error">
-            <p id="error-login" class="error-text"></p>
+            <p id="message-text" class="error-text"></p>
         </div>
 
     </div>

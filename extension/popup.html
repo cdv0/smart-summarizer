@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Summarizer</title>
+    <link rel="icon" type="image/png" href="assets/icon.png" />
     <link rel="stylesheet" href="popup.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -134,9 +135,9 @@
         </div>
 
         <!-- Buttons -->
-        <button class="btn-fill btn-y-padding" id="btn-set-password" type="submit">Set new password</button>
+        <button class="btn-fill btn-y-padding" id="btn-set-password" type="submit" disabled>Set new password</button>
 
-        <!-- ERROR MESSAGE -->
+        <!-- ERROR/SUCCESS MESSAGE -->
         <div class="error">
             <p id="error-new-password" class="error-text"></p>
         </div>
@@ -174,7 +175,8 @@
 
         <!-- ERROR/SUCCESS MESSAGE -->
         <div class="error">
-            <p id="error-forgot-password" class="error-text"><span id="success-forgot-password" class="success-text"></span></p>
+            <p id="error-forgot-password" class="error-text"></p>
+            <span id="success-forgot-password" class="success-text"></span>
         </div>
 
         <!-- Sign in button -->
