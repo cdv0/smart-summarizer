@@ -47,15 +47,18 @@ const inputSignupEmail = document.getElementById("input-signup-email");
 const inputSignupPassword = document.getElementById("input-signup-password");
 const inputSignupConfirmPassword = document.getElementById("input-signup-confirm-password");
 const btnSignup = document.getElementById("btn-signup");
+const errorSignup = document.getElementById("error-signup");
 
 // Forgot password email view buttons & inputs
 const btnLabelBackToLogin = document.getElementById("btn-label-back-to-login");
 const btnSendPasswordResetLink = document.getElementById("btn-password-reset-link",);
 const inputForgotPasswordEmail = document.getElementById("input-forgot-password-email");
+const errorForgotPassword = document.getElementById("error-forgot-password");
 
 // New password view buttons
 const btnLabelBackToLoginFromNewPassword = document.getElementById("btn-label-back-to-login-from-password");
 const btnSetNewPassword = document.getElementById("btn-set-password");
+const errorNewPassword = document.getElementById("error-new-password");
 
 // Password changed view buttons
 const btnLabelBackToLoginFromPasswordChanged = document.getElementById("btn-label-back-to-login-from-password-changed");
@@ -184,8 +187,8 @@ btnLabelBackToLoginFromPasswordChanged.addEventListener("click", goSignIn);
 // Go forgot password email view
 btnLabelForgotPassword.addEventListener("click", goForgotPassword);
 
-// Go new password view
-btnSendPasswordResetLink.addEventListener("click", goNewPassword);
+// // Go new password view
+// btnSendPasswordResetLink.addEventListener("click", goNewPassword);
 
 // Go password changed view
 btnSetNewPassword.addEventListener("click", goPasswordChanged);
@@ -290,6 +293,7 @@ btnSignup.addEventListener("click", async () => {
 
     if (!response.ok) {
         console.log("Signup error:", data.error);
+        errorSignup.textContent = data.error;
         return;
     }
 
