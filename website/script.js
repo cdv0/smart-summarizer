@@ -10,14 +10,9 @@ const inputConfirmPassword = document.getElementById("input-forgot-password-new-
 const btnSetPassword = document.getElementById("btn-set-password");
 const messageText = document.getElementById("message-text");
 
-<<<<<<< HEAD
 const passwordToggleBtns = document.querySelectorAll(".password-toggle");
 
 passwordToggleBtns.forEach((button) => {
-=======
-// Eye toggles
-document.querySelectorAll(".password-toggle").forEach((button) => {
->>>>>>> 34069348f8473f2f8eabc129cdfc81273e10b955
     button.addEventListener("click", () => {
         const wrapper = button.closest(".input-wrapper");
         const input = wrapper.querySelector(".password-input");
@@ -28,19 +23,7 @@ document.querySelectorAll(".password-toggle").forEach((button) => {
     });
 });
 
-<<<<<<< HEAD
-function checkPasswordsMatch() {
-    const newVal = inputNewPassword.value;
-    const confirmVal = inputConfirmPassword.value;
-    btnSetPassword.disabled = !(newVal && confirmVal && newVal === confirmVal);
-}
-
-inputNewPassword.addEventListener("input", checkPasswordsMatch);
-inputConfirmPassword.addEventListener("input", checkPasswordsMatch);
-
-=======
 // Reset password
->>>>>>> 34069348f8473f2f8eabc129cdfc81273e10b955
 btnSetPassword.addEventListener("click", async () => {
     const newPassword = inputNewPassword.value.trim();
     const confirmPassword = inputConfirmPassword.value.trim();

@@ -287,18 +287,10 @@ btnSendPasswordResetLink.addEventListener("click", async () => {
         return;
     }
 
-<<<<<<< HEAD
     errorForgotPassword.textContent = "";
     successForgotPassword.textContent = "Reset link sent to email";
 });
 
-=======
-    successForgotPassword.textContent = "Reset link sent to email.";
-});
-
-
-// ************ PASSWORD EYE TOGGLES *****************
->>>>>>> 34069348f8473f2f8eabc129cdfc81273e10b955
 const passwordToggleBtns = document.querySelectorAll(".password-toggle");
 
 passwordToggleBtns.forEach((button) => {
@@ -319,14 +311,11 @@ passwordToggleBtns.forEach((button) => {
 const errorTexts = document.querySelectorAll(".error-text");
 const inputs = document.querySelectorAll(".input");
 
-<<<<<<< HEAD
-=======
 inputForgotPasswordEmail.addEventListener("input", () => {
     successForgotPassword.textContent = "";
     errorForgotPassword.textContent = "";
 });
 
->>>>>>> 34069348f8473f2f8eabc129cdfc81273e10b955
 inputs.forEach((input) => {
     input.addEventListener("input", () => {
         errorTexts.forEach((text) => {
