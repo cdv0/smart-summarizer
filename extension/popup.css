@@ -107,6 +107,19 @@ p {
     align-items: center;
 }
 
+/** ERROR **/
+.error {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 16px;
+}
+
+.error-text {
+    font-size: 12px;
+    color: rgb(176, 22, 22);
+}
+
 
 
 /** HOME VIEW **/

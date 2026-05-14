@@ -290,3 +290,18 @@ passwordToggleBtns.forEach((button) => {
     }
   });
 });
+
+
+// ***************** CLEAR ALL ERROR MESSAGE DISPLAY ************************
+const errorTexts = document.querySelectorAll(".error-text");
+const inputs = document.querySelectorAll(".input");
+
+inputs.forEach((input) => {
+    input.addEventListener("input", () => {
+
+        errorTexts.forEach((text) => {
+            text.textContent = "";
+        });
+
+    });
+});
