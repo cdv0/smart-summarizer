@@ -9,6 +9,10 @@ const forgotPasswordEmailView = document.getElementById("forgot-password-email-v
 const newPasswordView = document.getElementById("new-password-view");
 const passwordChangedView = document.getElementById("password-changed-view");
 
+// CONSTANTS
+const API_URL = "http://localhost:3000";
+
+
 // Home view settings and history buttons
 const btnSettingsInHome = document.getElementById("btn-settings");
 const btnHistoryInHome = document.getElementById("btn-history");
@@ -30,12 +34,11 @@ const btnHistoryInSettings = document.getElementById("btn-history-settings");
 
 // Login view buttons
 const btnLabelSignUp = document.getElementById("btn-label-sign-up");
-const btnLabelForgotPassword = document.getElementById(
-  "btn-label-forgot-password",
-);
+const btnLabelForgotPassword = document.getElementById("btn-label-forgot-password");
 const inputLoginEmail = document.getElementById("input-login-email");
 const inputLoginPassword = document.getElementById("input-login-password");
 const btnLogin = document.getElementById("btn-login");
+const errorLogin = document.getElementById("error-login");
 
 // Signup view buttons
 const btnLabelSignIn = document.getElementById("btn-label-login");
@@ -211,9 +214,36 @@ btnDetailedLength.addEventListener("click", () => {
 // inputLoginEmail.addEventListener("input", updateLoginButton);
 // inputLoginPassword.addEventListener("input", updateLoginButton);
 
+// LOG IN
+btnLogin.addEventListener("click", async () => {
+    const response = await fetch(`${API_URL}/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: inputLoginEmail.value.trim(),
+            password: inputLoginPassword.value,
+        })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        console.log("Login error:", data.error);
+        errorLogin.textContent = data.error;
+        return;
+    }
+
+    console.log("Login success:", data);
+    goHome();
+})
+
+
 // ************* SIGN UP VIEW *********************
+// SIGN UP
 btnSignup.addEventListener("click", async () => {
-    const response = await fetch("http://localhost:3000/signup", {
+    const response = await fetch(`${API_URL}/signup`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

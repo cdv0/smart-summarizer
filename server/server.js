@@ -83,6 +83,27 @@ app.post("/summarize", async (req, res) => {
 });
 
 
+// ******************** LOG IN **********************
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body ?? {};
+  
+  if (!email || !password) {
+    return res.status(400).json({ error: "Missing fields" });
+  }
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    return res.status(400).json({ error: error.message });
+  }
+
+  return res.json({ user: data.user });
+
+})
+
 // ******************** SIGN UP **********************
 app.post("/signup", async (req, res) => {
     const { email, password, confirmPassword } = req.body ?? {};
