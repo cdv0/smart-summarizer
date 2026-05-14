@@ -31,6 +31,7 @@ const btnSettingsInHistory = document.getElementById("btn-settings-history");
 const btnBackSettings = document.getElementById("btn-back-settings");
 const btnSettingsInSettings = document.getElementById("btn-settings-current");
 const btnHistoryInSettings = document.getElementById("btn-history-settings");
+const btnSignout = document.getElementById("btn-signout");
 
 // Login view buttons
 const btnLabelSignUp = document.getElementById("btn-label-sign-up");
@@ -124,6 +125,7 @@ function goHome() {
 function goSignUp() {
   loginView.style.display = "none";
   signupView.style.display = "block";
+  settingsView.style.display = "none";
 }
 
 function goSignIn() {
@@ -132,6 +134,7 @@ function goSignIn() {
   forgotPasswordEmailView.style.display = "none";
   newPasswordView.style.display = "none";
   passwordChangedView.style.display = "none";
+  settingsView.style.display = "none";
 }
 
 function goForgotPassword() {
@@ -294,6 +297,22 @@ btnSendPasswordResetLink.disabled = true;
 inputForgotPasswordEmail.addEventListener("input", () => {
   btnSendPasswordResetLink.disabled = !inputForgotPasswordEmail.value.trim();
 });
+
+// ***************** SETTINGS VIEW ************************
+btnSignout.addEventListener("click", async () => {
+    const { access_token } = await chrome.storage.local.get(["access_token"]);
+
+    const response = await fetch(`${API_URL}/signout`, {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${access_token}`
+        }
+    })
+
+    await chrome.storage.local.remove("access_token");
+    goSignIn();
+})
+
 
 // ************ PASSWORD EYE TOGGLES *****************
 const passwordToggleBtns = document.querySelectorAll(".password-toggle");

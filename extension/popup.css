@@ -107,6 +107,12 @@ p {
     align-items: center;
 }
 
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 /** ERROR **/
 .error {
     display: flex;
@@ -308,6 +314,22 @@ p {
     width: 18px;
     height: 18px;
     transition: color 0.4s ease;
+}
+
+.btn-gray-outline {
+    border: 0.5px solid #B4B2A9;
+    color: #5F5E5A;
+    background-color: transparent;
+    width: 100%;
+    border-radius: 6px;
+    padding: 8px;
+    transition: color 0.4s ease;
+}
+
+.btn-gray-outline:hover {
+    color: #2C2C2A;
+    background-color: rgba(228, 228, 216, 0.604);
+    border: 0.5px solid #B4B2A9;
 }
 
 .btn-danger-outline {

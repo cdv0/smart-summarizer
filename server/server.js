@@ -132,6 +132,23 @@ app.post("/signup", async (req, res) => {
     return res.json({ user: data.user });
 });
 
+// ******************** SIGN OUT ********************
+app.post("/signout", async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1]; // Get only the bearer token value
+
+  if (!token) {
+    return res.status(401).json({ error: "Missing token" });
+  }
+
+  const { error } = await supabase.auth.admin.signOut(token); // 'admin.signOut' uses token to sign out. more used for backend/servers. auth.signOut uses the current logged in session automatically, meant for frontend usage
+
+  if (error) {
+    return res.status(400).json({ error: error.message });
+  }
+
+  return res.json({ success: true })
+})
+
 
 // ******************** EXPRESS SERVER **********************
 // Starts the Express server and tells it to listen for incoming requests on port 3000
