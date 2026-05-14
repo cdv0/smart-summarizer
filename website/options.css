@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+#new-password-view {
+    width: 350px;
+    padding: 32px 24px;
+    box-sizing: border-box;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.center-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn-y-padding {
+    margin: 18px 0;
+}
+
+.auth-title {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.auth-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 24px;
+}
+
+.auth-subtext {
+    color: rgb(137, 137, 137);
+    font-size: 12px;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 6px;
+    background-color: rgba(231, 228, 214, 0.372);
+    border: solid 1px rgb(220, 220, 220);
+    box-sizing: border-box;
+}
+
+.input {
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-icon {
+    font-size: 16px !important;
+    color: rgb(90, 90, 90);
+    line-height: 1;
+}
+
+.password-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-fill {
+    border: solid 1px rgb(76, 59, 150);
+    color: rgb(255, 255, 255);
+    background-color: rgb(95, 74, 179);
+    width: 100%;
+    border-radius: 6px;
+    padding: 8px;
+    transition: color 0.4s ease;
+    cursor: pointer;
+}
+
+.btn-fill:hover {
+    border: solid 1px rgb(64, 48, 130);
+    color: rgb(255, 255, 255);
+    background-color: rgb(76, 59, 150);
+}
+
+.auth-btn-label {
+    color: rgb(95, 74, 179);
+    background-color: transparent;
+    padding: 0px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.4s ease;
+    margin-left: 4px;
+}
+
+.auth-btn-label:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: rgb(76, 59, 150);
+}
+
+.error {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 16px;
+}
+
+.error-text {
+    font-size: 12px;
+    color: rgb(176, 22, 22);
+}
+
+.success-text {
+    font-size: 12px;
+    color: rgb(45, 168, 45);
+}

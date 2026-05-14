@@ -9,7 +9,7 @@ import { generateText } from "ai";
 import { model } from "./gemini.js";
 import { supabase } from "./supabase.js";
 
-// ******************** SUMMARIZE **********************
+// *************** SERVER SETUP *******************
 
 // Sets up server. Creates API server. Allows requests from extension. Parses JSON body.
 // The .use() commands are basically setting up settings
@@ -27,6 +27,9 @@ app.use(express.json({ limit: "10mb" })); // Automatically parse incoming JSON r
         app.delete(..., (req, res) => {})
     Add async typically in backend code, because they usually run asynchronously
 */
+
+
+// ******************** SUMMARIZE **********************
 // API for both summarize page and summarize content
 app.post("/summarize", async (req, res) => { 
   // req.body is shaped by user's input. So in frontend, we included html and summaryLength, so we can extract that in backend
@@ -141,6 +144,25 @@ app.post("/signout", async (req, res) => {
   }
 
   const { error } = await supabase.auth.admin.signOut(token); // 'admin.signOut' uses token to sign out. more used for backend/servers. auth.signOut uses the current logged in session automatically, meant for frontend usage
+
+  if (error) {
+    return res.status(400).json({ error: error.message });
+  }
+
+  return res.json({ success: true })
+})
+
+// *************** RESET PASSWORD ******************
+app.post("/resetPassword", async (req, res) => {
+  const { email } = req.body ?? {}
+
+  if (!email) {
+    return res.status(400).json({ error: "Missing email" });
+  }
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `chrome-extension://${process.env.EXTENSION_ID}/options.html`
+  });
 
   if (error) {
     return res.status(400).json({ error: error.message });

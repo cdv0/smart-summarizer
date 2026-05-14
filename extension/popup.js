@@ -54,6 +54,7 @@ const btnLabelBackToLogin = document.getElementById("btn-label-back-to-login");
 const btnSendPasswordResetLink = document.getElementById("btn-password-reset-link",);
 const inputForgotPasswordEmail = document.getElementById("input-forgot-password-email");
 const errorForgotPassword = document.getElementById("error-forgot-password");
+const successForgotPassword = document.getElementById("success-forgot-password");
 
 // New password view buttons
 const btnLabelBackToLoginFromNewPassword = document.getElementById("btn-label-back-to-login-from-password");
@@ -144,6 +145,8 @@ function goSignIn() {
 
   inputLoginEmail.value = inputSignupEmail.value;
   inputLoginPassword.value = inputSignupPassword.value;
+  successForgotPassword.textContent = "";
+  errorForgotPassword.textContent = "";
 }
 
 function goForgotPassword() {
@@ -325,6 +328,32 @@ btnSignout.addEventListener("click", async () => {
     goSignIn();
 })
 
+// *********** RESET PASSWORD *****************
+btnSendPasswordResetLink.addEventListener("click", async () => {
+    const response = await fetch(`${API_URL}/resetPassword`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: inputForgotPasswordEmail.value.trim()
+        })
+    });
+
+    const data = await response.json();
+    console.log("Reset response:", response.ok, data);
+
+    if (!response.ok) {
+        console.log("Reset password error:", data.error);
+        errorForgotPassword.textContent = data.error;
+        return;
+    }
+
+    successForgotPassword.textContent = "Reset link sent to email";
+
+    console.log(errorForgotPassword);
+})
+
 
 // ************ PASSWORD EYE TOGGLES *****************
 const passwordToggleBtns = document.querySelectorAll(".password-toggle");
@@ -347,7 +376,13 @@ passwordToggleBtns.forEach((button) => {
 
 // ***************** CLEAR ALL ERROR MESSAGE DISPLAY ************************
 const errorTexts = document.querySelectorAll(".error-text");
+const successText = document.getElementById("success-forgot-password");
 const inputs = document.querySelectorAll(".input");
+
+inputForgotPasswordEmail.addEventListener("input", () => {
+    successText.textContent = "";
+    errorForgotPassword.textContent = "";
+});
 
 inputs.forEach((input) => {
     input.addEventListener("input", () => {
@@ -358,3 +393,4 @@ inputs.forEach((input) => {
 
     });
 });
+

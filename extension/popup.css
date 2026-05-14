@@ -126,6 +126,11 @@ p {
     color: rgb(176, 22, 22);
 }
 
+.success-text {
+    font-size: 12px;
+    color: rgb(45, 168, 45);
+}
+
 
 
 /** HOME VIEW **/
