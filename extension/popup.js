@@ -126,6 +126,9 @@ function goSignUp() {
   loginView.style.display = "none";
   signupView.style.display = "block";
   settingsView.style.display = "none";
+
+  inputSignupEmail.value = inputLoginEmail.value;
+  inputSignupPassword.value = inputLoginPassword.value;
 }
 
 function goSignIn() {
@@ -135,11 +138,16 @@ function goSignIn() {
   newPasswordView.style.display = "none";
   passwordChangedView.style.display = "none";
   settingsView.style.display = "none";
+
+  inputLoginEmail.value = inputSignupEmail.value;
+  inputLoginPassword.value = inputSignupPassword.value;
 }
 
 function goForgotPassword() {
   loginView.style.display = "none";
   forgotPasswordEmailView.style.display = "block";
+
+  inputForgotPasswordEmail.value = inputLoginEmail.value? inputLoginEmail.value : ""
 }
 
 function goNewPassword() {
