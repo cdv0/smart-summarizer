@@ -9,24 +9,31 @@ const forgotPasswordEmailView = document.getElementById("forgot-password-email-v
 const newPasswordView = document.getElementById("new-password-view");
 const passwordChangedView = document.getElementById("password-changed-view");
 
+// CONSTANTS
 const API_URL = "http://localhost:3000";
 
+
+// Home view settings and history buttons
 const btnSettingsInHome = document.getElementById("btn-settings");
 const btnHistoryInHome = document.getElementById("btn-history");
 
+// Home view length selector buttons
 const btnShortLength = document.getElementById("btn-length-short");
 const btnMediumLength = document.getElementById("btn-length-medium");
 const btnDetailedLength = document.getElementById("btn-length-detailed");
 
+// History back, view settings and history buttons
 const btnBackHistory = document.getElementById("btn-back-history");
 const btnHistoryCurrent = document.getElementById("btn-history-current");
 const btnSettingsInHistory = document.getElementById("btn-settings-history");
 
+// Settings view back, history and settings buttons
 const btnBackSettings = document.getElementById("btn-back-settings");
 const btnSettingsInSettings = document.getElementById("btn-settings-current");
 const btnHistoryInSettings = document.getElementById("btn-history-settings");
 const btnSignout = document.getElementById("btn-signout");
 
+// Login view buttons
 const btnLabelSignUp = document.getElementById("btn-label-sign-up");
 const btnLabelForgotPassword = document.getElementById("btn-label-forgot-password");
 const inputLoginEmail = document.getElementById("input-login-email");
@@ -34,6 +41,7 @@ const inputLoginPassword = document.getElementById("input-login-password");
 const btnLogin = document.getElementById("btn-login");
 const errorLogin = document.getElementById("error-login");
 
+// Signup view buttons
 const btnLabelSignIn = document.getElementById("btn-label-login");
 const inputSignupEmail = document.getElementById("input-signup-email");
 const inputSignupPassword = document.getElementById("input-signup-password");
@@ -41,35 +49,45 @@ const inputSignupConfirmPassword = document.getElementById("input-signup-confirm
 const btnSignup = document.getElementById("btn-signup");
 const errorSignup = document.getElementById("error-signup");
 
+// Forgot password email view buttons & inputs
 const btnLabelBackToLogin = document.getElementById("btn-label-back-to-login");
 const btnSendPasswordResetLink = document.getElementById("btn-password-reset-link");
 const inputForgotPasswordEmail = document.getElementById("input-forgot-password-email");
 const errorForgotPassword = document.getElementById("error-forgot-password");
 const successForgotPassword = document.getElementById("success-forgot-password");
 
+// New password view buttons
 const btnLabelBackToLoginFromNewPassword = document.getElementById("btn-label-back-to-login-from-password");
 const btnSetNewPassword = document.getElementById("btn-set-password");
 const inputNewPassword = document.getElementById("input-forgot-password-new");
 const inputConfirmPassword = document.getElementById("input-forgot-password-new-confirm");
 const errorNewPassword = document.getElementById("error-new-password");
 
+// Password changed view buttons
 const btnLabelBackToLoginFromPasswordChanged = document.getElementById("btn-label-back-to-login-from-password-changed");
 
+// Set version text
 versionText.textContent = version;
 
+// ******* NAVIGATION TABS ************
+// Set initial view
 settingsView.style.display = "none";
 historyView.style.display = "none";
 homeView.style.display = "none";
 
+// Navigation Helper Functions
 function goSettings() {
   historyView.style.display = "none";
   homeView.style.display = "none";
   settingsView.style.display = "block";
 
+  // Settings buttons
   btnSettingsInSettings.classList.add("active-tab");
   btnHistoryInSettings.classList.remove("active-tab");
+  // Home buttons
   btnHistoryInHome.classList.remove("active-tab");
   btnSettingsInHome.classList.remove("active-tab");
+  // History buttons
   btnHistoryCurrent.classList.remove("active-tab");
   btnSettingsInHistory.classList.remove("active-tab");
 }
@@ -79,10 +97,13 @@ function goHistory() {
   settingsView.style.display = "none";
   historyView.style.display = "block";
 
+  // Settings buttons
   btnSettingsInSettings.classList.remove("active-tab");
   btnHistoryInSettings.classList.remove("active-tab");
+  // Home buttons
   btnHistoryInHome.classList.remove("active-tab");
   btnSettingsInHome.classList.remove("active-tab");
+  // History buttons
   btnHistoryCurrent.classList.add("active-tab");
   btnSettingsInHistory.classList.remove("active-tab");
 }
@@ -94,10 +115,15 @@ function goHome() {
   loginView.style.display = "none";
   homeView.style.display = "block";
 
+  // Settings buttons
   btnSettingsInSettings.classList.remove("active-tab");
   btnHistoryInSettings.classList.remove("active-tab");
+
+  // Home buttons
   btnSettingsInHome.classList.remove("active-tab");
   btnHistoryInHome.classList.remove("active-tab");
+
+  // History buttons
   btnHistoryCurrent.classList.remove("active-tab");
   btnSettingsInHistory.classList.remove("active-tab");
 }
@@ -137,26 +163,35 @@ function goPasswordChanged() {
   newPasswordView.style.display = "none";
 }
 
+// Go home
 btnBackSettings.addEventListener("click", goHome);
 btnBackHistory.addEventListener("click", goHome);
 
+// Go history
 btnHistoryInHome.addEventListener("click", goHistory);
 btnHistoryInSettings.addEventListener("click", goHistory);
 
+// Go settings
 btnSettingsInHistory.addEventListener("click", goSettings);
 btnSettingsInHome.addEventListener("click", goSettings);
 
+// Go signup
 btnLabelSignUp.addEventListener("click", goSignUp);
 
+// Go signin
 btnLabelSignIn.addEventListener("click", goSignIn);
 btnLabelBackToLogin.addEventListener("click", goSignIn);
 btnLabelBackToLoginFromNewPassword.addEventListener("click", goSignIn);
 btnLabelBackToLoginFromPasswordChanged.addEventListener("click", goSignIn);
 
+// Go forgot password email view
 btnLabelForgotPassword.addEventListener("click", goForgotPassword);
 
+// Go password changed view
 btnSetNewPassword.addEventListener("click", goPasswordChanged);
 
+// ****** HOME VIEW: CLICK LENGTH BUTTONS *******
+// Helper function
 function setActiveLength(activeBtn) {
   btnShortLength.classList.remove("active-length-btn");
   btnMediumLength.classList.remove("active-length-btn");
@@ -165,6 +200,7 @@ function setActiveLength(activeBtn) {
   activeBtn.classList.add("active-length-btn");
 }
 
+// click handlers
 btnShortLength.addEventListener("click", () => {
   setActiveLength(btnShortLength);
 });
@@ -177,14 +213,17 @@ btnDetailedLength.addEventListener("click", () => {
   setActiveLength(btnDetailedLength);
 });
 
+// ************** POP UP OPENS *******************
 chrome.storage.local.get(["access_token"], (result) => {
     if (result.access_token) {
         goHome();
     } else {
         goSignIn();
     }
-});
+})
 
+
+// ************* SIGN IN VIEW *********************
 btnLogin.addEventListener("click", async () => {
     const response = await fetch(`${API_URL}/login`, {
         method: "POST",
@@ -206,18 +245,21 @@ btnLogin.addEventListener("click", async () => {
     }
 
     if (data.session) {
+        // Store session token using chrome local storage for chrome extensions
         await chrome.storage.local.set({
             access_token: data.session.access_token
-        });
+        })
 
         const saved = await chrome.storage.local.get(["access_token"]);
-        console.log("Saved token:", saved.access_token);
+        console.log("Saved token:", saved.access_token);    
     }
 
     console.log("Login success:", data);
     goHome();
-});
+})
 
+
+// ************* SIGN UP VIEW *********************
 btnSignup.addEventListener("click", async () => {
     const response = await fetch(`${API_URL}/signup`, {
         method: "POST",
@@ -239,18 +281,20 @@ btnSignup.addEventListener("click", async () => {
         return;
     }
 
+    // Confirmation is required, supabase may not return a session
+
     console.log("Signup success:", data);
     goHome();
 });
 
+// ************* FORGOT PASSWORD VIEWS *********************
 btnSendPasswordResetLink.disabled = true;
 
 inputForgotPasswordEmail.addEventListener("input", () => {
   btnSendPasswordResetLink.disabled = !inputForgotPasswordEmail.value.trim();
-  successForgotPassword.textContent = "";
-  errorForgotPassword.textContent = "";
 });
 
+// ***************** SETTINGS VIEW ************************
 btnSignout.addEventListener("click", async () => {
     const { access_token } = await chrome.storage.local.get(["access_token"]);
 
@@ -259,68 +303,81 @@ btnSignout.addEventListener("click", async () => {
         headers: {
             "Authorization": `Bearer ${access_token}`
         }
-    });
+    })
 
     await chrome.storage.local.remove("access_token");
     goSignIn();
-});
+})
 
+// *********** RESET PASSWORD *****************
 btnSendPasswordResetLink.addEventListener("click", async () => {
-    errorForgotPassword.textContent = "";
-    successForgotPassword.textContent = "";
-
     const response = await fetch(`${API_URL}/resetPassword`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            email: inputForgotPasswordEmail.value.trim(),
-        }),
+            email: inputForgotPasswordEmail.value.trim()
+        })
     });
 
     const data = await response.json();
+    console.log("Reset response:", response.ok, data);
 
     if (!response.ok) {
+        console.log("Reset password error:", data.error);
         errorForgotPassword.textContent = data.error;
-        successForgotPassword.textContent = "";
         return;
     }
 
-    errorForgotPassword.textContent = "";
     successForgotPassword.textContent = "Reset link sent to email";
-});
 
-const passwordToggleBtns = document.querySelectorAll(".password-toggle");
+    console.log(errorForgotPassword);
+})
 
-passwordToggleBtns.forEach((button) => {
-  button.addEventListener("click", () => {
-    const input = button.parentElement.querySelector(".password-input");
-    const icon = button.querySelector(".input-icon");
 
-    if (input.type === "password") {
-      input.type = "text";
-      icon.textContent = "visibility_off";
+// ************ PASSWORD EYE TOGGLES *****************
+const toggleNewPassword = document.getElementById("toggle-new-password");
+const toggleConfirmPassword = document.getElementById("toggle-confirm-password");
+
+toggleNewPassword.addEventListener("click", () => {
+    if (inputNewPassword.type === "password") {
+        inputNewPassword.type = "text";
+        toggleNewPassword.textContent = "visibility_off";
     } else {
-      input.type = "password";
-      icon.textContent = "visibility";
+        inputNewPassword.type = "password";
+        toggleNewPassword.textContent = "visibility";
     }
-  });
 });
 
+toggleConfirmPassword.addEventListener("click", () => {
+    if (inputConfirmPassword.type === "password") {
+        inputConfirmPassword.type = "text";
+        toggleConfirmPassword.textContent = "visibility_off";
+    } else {
+        inputConfirmPassword.type = "password";
+        toggleConfirmPassword.textContent = "visibility";
+    }
+});
+
+
+// ***************** CLEAR ALL ERROR MESSAGE DISPLAY ************************
 const errorTexts = document.querySelectorAll(".error-text");
+const successText = document.getElementById("success-forgot-password");
 const inputs = document.querySelectorAll(".input");
 
 inputForgotPasswordEmail.addEventListener("input", () => {
-    successForgotPassword.textContent = "";
+    successText.textContent = "";
     errorForgotPassword.textContent = "";
 });
 
 inputs.forEach((input) => {
     input.addEventListener("input", () => {
+
         errorTexts.forEach((text) => {
             text.textContent = "";
         });
+
     });
 });
 
