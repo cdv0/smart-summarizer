@@ -52,6 +52,11 @@ p {
     padding:  16px 12px;
 }
 
+button:focus, button:active {
+    outline: none;
+    box-shadow: none;
+}
+
 .title-container {
     display: flex;
     justify-content: center;
@@ -243,7 +248,12 @@ p {
 }
 
 .result-body {
-    padding: 16px 12px;
+    padding: 12px;
+    line-height: 18px;
+    font-size: 13px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .result-container {

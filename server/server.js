@@ -1,6 +1,6 @@
 // server.js
 
-// COMMAND TO START SERVER: node server/server.js
+// COMMAND TO START SERVER: node /server/server.js
 
 import "dotenv/config";
 import express from "express";
@@ -175,6 +175,10 @@ app.post("/resetPassword", async (req, res) => {
 // ******************** EXPRESS SERVER **********************
 // Starts the Express server and tells it to listen for incoming requests on port 3000
 // Port 3000 is a commonly used development port for backend servers. We could have used any port and it would work.
-app.listen(3000, () => {
-  console.log("Smart Summarizer server running on port 3000");
+const server = app.listen(3001, () => {
+  console.log("Smart Summarizer server running on port 3001");
+});
+
+server.on("error", (err) => {
+  console.error("Server error:", err);
 });

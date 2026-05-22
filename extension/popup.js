@@ -10,17 +10,20 @@ const newPasswordView = document.getElementById("new-password-view");
 const passwordChangedView = document.getElementById("password-changed-view");
 
 // CONSTANTS
-const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:3001";
 
 
-// Home view settings and history buttons
+// Home view settings, history, summarize buttons
 const btnSettingsInHome = document.getElementById("btn-settings");
 const btnHistoryInHome = document.getElementById("btn-history");
+const btnSummarizePage = document.getElementById("btn-summarize-page");
 
-// Home view length selector buttons
+// Home view selectors
 const btnShortLength = document.getElementById("btn-length-short");
 const btnMediumLength = document.getElementById("btn-length-medium");
 const btnDetailedLength = document.getElementById("btn-length-detailed");
+const currentPageTitle = document.getElementById("current-page-title");
+const homeResultBody = document.getElementById("home-result-body");
 
 // History back, view settings and history buttons
 const btnBackHistory = document.getElementById("btn-back-history");
@@ -337,27 +340,22 @@ btnSendPasswordResetLink.addEventListener("click", async () => {
 
 
 // ************ PASSWORD EYE TOGGLES *****************
-const toggleNewPassword = document.getElementById("toggle-new-password");
-const toggleConfirmPassword = document.getElementById("toggle-confirm-password");
+const passwordToggleBtns = document.querySelectorAll(".password-toggle");
 
-toggleNewPassword.addEventListener("click", () => {
-    if (inputNewPassword.type === "password") {
-        inputNewPassword.type = "text";
-        toggleNewPassword.textContent = "visibility_off";
-    } else {
-        inputNewPassword.type = "password";
-        toggleNewPassword.textContent = "visibility";
-    }
-});
+passwordToggleBtns.forEach((button) => {
+    button.addEventListener("click", () => {
+        const wrapper = button.parentElement;
+        const input = wrapper.querySelector(".password-input");
+        const icon = button.querySelector(".input-icon");
 
-toggleConfirmPassword.addEventListener("click", () => {
-    if (inputConfirmPassword.type === "password") {
-        inputConfirmPassword.type = "text";
-        toggleConfirmPassword.textContent = "visibility_off";
-    } else {
-        inputConfirmPassword.type = "password";
-        toggleConfirmPassword.textContent = "visibility";
-    }
+        if (input.type === "password") {
+            input.type = "text";
+            icon.textContent = "visibility_off";
+        } else {
+            input.type = "password";
+            icon.textContent = "visibility";
+        }
+    });
 });
 
 
@@ -391,3 +389,78 @@ inputNewPassword.addEventListener("input", checkNewPasswordsMatch);
 inputConfirmPassword.addEventListener("input", checkNewPasswordsMatch);
 
 btnSetNewPassword.disabled = true;
+
+
+
+// ************* HOME VIEW **********************
+// Grab and display the tab's title on the popup
+async function tabTitle() {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
+    
+    currentPageTitle.textContent = tab.title;
+}
+
+document.addEventListener("DOMContentLoaded", tabTitle);
+
+async function getPageHtml() {
+  // chrome.tabs.query - returns a list of tabs
+  // [tab] destructures the first item from the array
+  // active: true gets the currently selected tab and currentWindow gets the current chrome window
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+  // chrome.scripting.executeScript runs JS directly inside the webpage.
+  // target: { tabId: tab.id } tells Chrome which tab to run the script in using the active tab's ID
+  // func: () => document.documentElement.outerHTML is the function executed inside the webpage, where it grabs the entire <html> element and returns the page as a string
+  const results = await chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: () => document.documentElement.outerHTML,
+  });
+
+  // executeScript returns an array of results
+  return results[0].result;
+}
+
+async function summarizePage() {
+    try {
+        const pageHtml = await getPageHtml();
+        const summaryLength = document.getElementById("default-length").value;
+
+        homeResultBody.textContent = "Generating summary...";
+
+        const response = await fetch(`${API_URL}/summarize`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                content: pageHtml,
+                summaryLength: summaryLength
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            console.log("Summarize error:", data.error);
+            homeResultBody.textContent = data.error;
+            return;
+        }
+
+        console.log("Summarize results:", data);
+
+        if (data.summary) {
+            homeResultBody.textContent = data.summary
+        } else {
+            homeResultBody.textContent = "An error ocurred. Please try again"
+        }
+
+        return data;
+
+    } catch (err) {
+        console.log("Summarize error:", err);
+        homeResultBody.textContent = err.message;
+    }
+}
+
+// Click summarize page button
+btnSummarizePage.addEventListener("click", summarizePage);
