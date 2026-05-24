@@ -36,6 +36,7 @@ const btnSettingsInSettings = document.getElementById("btn-settings-current");
 const btnHistoryInSettings = document.getElementById("btn-history-settings");
 const btnSignout = document.getElementById("btn-signout");
 const dropdownDefaultLength = document.getElementById("default-length");
+const dropdownKeepHistoryFor = document.getElementById("keep-history-for");
 
 // Login view buttons
 const btnLabelSignUp = document.getElementById("btn-label-sign-up");
@@ -340,6 +341,18 @@ btnSignout.addEventListener("click", async () => {
     await chrome.storage.local.remove("access_token");
     goSignIn();
 })
+
+// Save history persist value when the dropdown value changes
+dropdownKeepHistoryFor.addEventListener("change", () => {
+    chrome.storage.local.set({
+        history_persistence: dropdownKeepHistoryFor.value
+    });
+})
+
+// Grab the history persist value when pop up opens
+const result = await chrome.storage.local.get(["history_persistence"]);
+dropdownKeepHistoryFor.value = result.history_persistance || "seven";
+
 
 // *********** RESET PASSWORD *****************
 btnSendPasswordResetLink.addEventListener("click", async () => {
