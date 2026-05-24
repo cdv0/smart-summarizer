@@ -35,6 +35,7 @@ const btnBackSettings = document.getElementById("btn-back-settings");
 const btnSettingsInSettings = document.getElementById("btn-settings-current");
 const btnHistoryInSettings = document.getElementById("btn-history-settings");
 const btnSignout = document.getElementById("btn-signout");
+const dropdownDefaultLength = document.getElementById("default-length");
 
 // Login view buttons
 const btnLabelSignUp = document.getElementById("btn-label-sign-up");
@@ -194,26 +195,54 @@ btnLabelForgotPassword.addEventListener("click", goForgotPassword);
 btnSetNewPassword.addEventListener("click", goPasswordChanged);
 
 // ****** HOME VIEW: CLICK LENGTH BUTTONS *******
-// Helper function
-function setActiveLength(activeBtn) {
+// Set summary length for anything given the length value
+async function setSummaryLength(length) {
   btnShortLength.classList.remove("active-length-btn");
   btnMediumLength.classList.remove("active-length-btn");
   btnDetailedLength.classList.remove("active-length-btn");
 
-  activeBtn.classList.add("active-length-btn");
+  if (length === "short") {
+    btnShortLength.classList.add("active-length-btn");
+  }
+
+  if (length === "medium") {
+    btnMediumLength.classList.add("active-length-btn");
+  }
+
+  if (length === "detailed") {
+    btnDetailedLength.classList.add("active-length-btn");
+  }
+
+  dropdownDefaultLength.value = length;
+
+  await chrome.storage.local.set({
+    summary_length: length
+  });
 }
 
-// click handlers
+// Load saved length when popup opens
+document.addEventListener("DOMContentLoaded", async () => {
+  const result = await chrome.storage.local.get(["summary_length"]);
+
+  setSummaryLength(result.summary_length || "short");
+});
+
+// Set up listeners for home view length buttons
 btnShortLength.addEventListener("click", () => {
-  setActiveLength(btnShortLength);
+  setSummaryLength("short");
 });
 
 btnMediumLength.addEventListener("click", () => {
-  setActiveLength(btnMediumLength);
+  setSummaryLength("medium");
 });
 
 btnDetailedLength.addEventListener("click", () => {
-  setActiveLength(btnDetailedLength);
+  setSummaryLength("detailed");
+});
+
+// Settings dropdown change
+dropdownDefaultLength.addEventListener("change", () => {
+  setSummaryLength(dropdownDefaultLength.value);
 });
 
 // ************** POP UP OPENS *******************
