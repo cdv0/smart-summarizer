@@ -172,6 +172,83 @@ app.post("/resetPassword", async (req, res) => {
 })
 
 
+// ******************** SAVE SUMMARY **********************
+app.post("/saveSummary", async (req, res) => {
+  const { topic, summary, url, summary_length } = req.body ?? {};
+
+  if (!topic || !summary || !url || !summary_length) {
+    return res.status(400).json({ error: "Missing fields" });
+  }
+
+  const { data, error } = await supabase
+    .from("summaries")
+    .insert([
+      {
+        topic: topic,
+        summary: summary,
+        url: url,
+        summary_length: summary_length
+      }
+    ])
+
+  if (error) {
+    return res.status(400).json({ error: error.message });
+  }
+
+  return res.json({ summary: data });
+});
+
+
+// ******************** FETCH ALL SUMMARIES **********************
+app.get("/summaries", async (req, res) => {
+  const { data, error } = await supabase
+    .from("summaries")
+    .select()
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    return res.status(400).json({ error: error.message });
+  }
+
+  return res.json({ summaries: data });
+});
+
+
+// ******************** FETCH SINGLE SUMMARY **********************
+app.get("/summaries/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const { data, error } = await supabase
+    .from("summaries")
+    .select()
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    return res.status(400).json({ error: error.message });
+  }
+
+  return res.json({ summary: data });
+});
+
+
+// ******************** DELETE SUMMARY **********************
+app.delete("/summaries/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const { error } = await supabase
+    .from("summaries")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    return res.status(400).json({ error: error.message });
+  }
+
+  return res.json({ success: true });
+});
+
+
 // ******************** EXPRESS SERVER **********************
 // Starts the Express server and tells it to listen for incoming requests on port 3000
 // Port 3000 is a commonly used development port for backend servers. We could have used any port and it would work.

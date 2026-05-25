@@ -1,3 +1,5 @@
+import { insertSummary, getAllSummaries, getSummaryById, deleteSummary } from "./summarize.js";
+
 const version = chrome.runtime.getManifest().version;
 const versionText = document.getElementById("version-text");
 const homeView = document.getElementById("home-view");
@@ -436,13 +438,16 @@ btnSetNewPassword.disabled = true;
 
 // ************* HOME VIEW **********************
 // Grab and display the tab's title on the popup
-async function tabTitle() {
+async function getCurrentTab() {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
     
     currentPageTitle.textContent = tab.title;
+
+    return tab;
+    
 }
 
-document.addEventListener("DOMContentLoaded", tabTitle);
+document.addEventListener("DOMContentLoaded", getCurrentTab);
 
 async function getPageHtml() {
   // chrome.tabs.query - returns a list of tabs
@@ -492,6 +497,16 @@ async function summarizePage() {
 
         if (data.summary) {
             homeResultBody.textContent = data.summary
+            
+            tab = await getCurrentTab();
+
+            // Store the summary details
+            await insertSummary(
+                tab.title,
+                data.summary,
+                tab.url,
+                summaryLength
+            )
         } else {
             homeResultBody.textContent = "An error ocurred. Please try again"
         }
