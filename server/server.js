@@ -7,7 +7,7 @@ import express from "express";
 import cors from "cors";
 import { generateText } from "ai";
 import { model } from "./gemini.js";
-import { supabase } from "./supabase.js";
+import { supabase, supabaseAnon } from "./supabase.js";
 
 // *************** SERVER SETUP *******************
 
@@ -172,18 +172,46 @@ app.post("/resetPassword", async (req, res) => {
 })
 
 
-// ******************** SAVE SUMMARY **********************
+// HELPER: GET USER ID
+async function getUserId(req) {
+  const authHeader = req.headers.authorization;
+  console.log("Auth header:", authHeader);
+
+  const token = authHeader?.split(" ")[1];
+  console.log("Token exists:", !!token);
+
+  if (!token) {
+    return null;
+  }
+
+  const { data, error } = await supabaseAnon.auth.getUser(token);
+
+  console.log("Auth user:", data?.user?.id);
+  console.log("Auth error:", error?.message);
+
+  if (error || !data.user) {
+    return null;
+  }
+
+  return data.user.id;
+}
+
+
+// ************* SAVE SUMMARY ********************
 app.post("/saveSummary", async (req, res) => {
   const { topic, summary, url, summary_length } = req.body ?? {};
 
-  if (!topic || !summary || !url || !summary_length) {
-    return res.status(400).json({ error: "Missing fields" });
+  const userId = await getUserId(req);
+
+  if (!userId) {
+    return res.status(401).json({ error: "Unauthorized" });
   }
 
   const { data, error } = await supabase
-    .from("summaries")
+    .from("summary")
     .insert([
       {
+        user_id: userId,
         topic: topic,
         summary: summary,
         url: url,
@@ -202,7 +230,7 @@ app.post("/saveSummary", async (req, res) => {
 // ******************** FETCH ALL SUMMARIES **********************
 app.get("/summaries", async (req, res) => {
   const { data, error } = await supabase
-    .from("summaries")
+    .from("summary")
     .select()
     .order("created_at", { ascending: false });
 
@@ -219,7 +247,7 @@ app.get("/summaries/:id", async (req, res) => {
   const { id } = req.params;
 
   const { data, error } = await supabase
-    .from("summaries")
+    .from("summary")
     .select()
     .eq("id", id)
     .single();
@@ -237,7 +265,7 @@ app.delete("/summaries/:id", async (req, res) => {
   const { id } = req.params;
 
   const { error } = await supabase
-    .from("summaries")
+    .from("summary")
     .delete()
     .eq("id", id);
 

@@ -1,5 +1,3 @@
-import { insertSummary, getAllSummaries, getSummaryById, deleteSummary } from "./summarize.js";
-
 const version = chrome.runtime.getManifest().version;
 const versionText = document.getElementById("version-text");
 const homeView = document.getElementById("home-view");
@@ -444,10 +442,10 @@ async function getCurrentTab() {
     currentPageTitle.textContent = tab.title;
 
     return tab;
-    
 }
 
-document.addEventListener("DOMContentLoaded", getCurrentTab);
+// document.addEventListener("DOMContentLoaded", getCurrentTab);
+getCurrentTab();
 
 async function getPageHtml() {
   // chrome.tabs.query - returns a list of tabs
@@ -498,15 +496,33 @@ async function summarizePage() {
         if (data.summary) {
             homeResultBody.textContent = data.summary
             
-            tab = await getCurrentTab();
+            const tab = await getCurrentTab();
+            const { access_token } = await chrome.storage.local.get(["access_token"]);
 
             // Store the summary details
-            await insertSummary(
-                tab.title,
-                data.summary,
-                tab.url,
-                summaryLength
-            )
+            const saveResponse = await fetch(`${API_URL}/saveSummary`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${access_token}`
+                },
+                body: JSON.stringify({
+                    topic: tab.title,
+                    summary: data.summary,
+                    url: tab.url,
+                    summary_length: summaryLength
+                })
+            });
+
+            const saveData = await saveResponse.json();
+
+            if (!saveResponse.ok) {
+                console.log("Save summary error:", saveData.error);
+                return;
+            }
+
+            console.log("Saved summary:", saveData);
+
         } else {
             homeResultBody.textContent = "An error ocurred. Please try again"
         }
